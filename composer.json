@@ -1,0 +1,36 @@
+{
+    "name": "tuanbtre/csm",
+    "description": "Website for developer",
+	"authors": [{
+            "name": "Nguyen Minh Tuan",
+            "email": "tuancsharp@gmail.com"
+        }],
+    "require": {
+		"php": "^7.3|^8.0",
+		"laravel/ui": "^3.3",
+		"spatie/laravel-analytics": "^3.11",
+        "unisharp/laravel-filemanager": "^2.2"
+	},
+	"extra": {
+        "laravel": {
+            "providers": [
+                "Tuanbtre\\Csm\\CsmServiceProvider"
+            ]
+        }
+    },
+	"autoload": {
+        "psr-4": {
+            "Tuanbtre\\Csm\\": "src/",
+            "App\\": "app/"
+        },
+		"files":[
+            "src/helpers/helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+			"Tuanbtre\\Csm\\": "src/",
+			"Tests\\": "tests/"
+        }
+    }
+}
