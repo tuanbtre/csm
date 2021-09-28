@@ -34,6 +34,7 @@ class RouteLanguageController extends Controller
              'route_name'=>$request->route_name,
              'controlleract'=>$request->controlleract,
              'method'=>$request->method,
+             'middleware'=>$request->middleware,
              'url'=>$request->url,
              'parent_id'=>$request->parent_id,
              'language_id'=>$request->l

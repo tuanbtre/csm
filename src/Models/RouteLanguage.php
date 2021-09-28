@@ -11,7 +11,7 @@ class RouteLanguage extends Model
    protected $table = 'route_language';
     
    protected $fillable = [
-      'id', 'route_name', 'url', 'controlleract', 'method', 'title', 'language_id', 'parent_id' 
+      'id', 'route_name', 'url', 'controlleract', 'method', 'middleware', 'title', 'language_id', 'parent_id' 
    ];
    public function language()
    {

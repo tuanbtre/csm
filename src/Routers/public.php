@@ -12,13 +12,22 @@ Route::group(['middleware'=>'locale,web'], function () use($rl) {
 		try{
 			switch ($item->method) {
 			   case 'post':
-			      Route::post($item->url, $item->controlleract)->name($item->route_name);
+			      if($item->middleware)
+					Route::post($item->url, $item->controlleract)->name($item->route_name)->middleware($item->middleware);
+				  else
+					Route::post($item->url, $item->controlleract)->name($item->route_name);  
 			      break;
 			   case 'any':
-			      Route::any($item->url, $item->controlleract)->name($item->route_name);
+			      if($item->middleware)
+					Route::any($item->url, $item->controlleract)->name($item->route_name)->middleware($item->middleware);
+				  else
+					Route::any($item->url, $item->controlleract)->name($item->route_name);  
 			      break;
 			   default:
-			      Route::get($item->url, $item->controlleract)->name($item->route_name);
+			      if($item->middleware)
+					Route::get($item->url, $item->controlleract)->name($item->route_name)->middleware($item->middleware);
+				  else
+					Route::get($item->url, $item->controlleract)->name($item->route_name);  
 			}
 		}catch(\Exception $e){	
 			continue;

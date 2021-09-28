@@ -63,7 +63,7 @@
                      <td>{!!$item->controlleract!!}</td>
                      <td>{!!$item->method!!}</td>
                      <td>{!!$item->url!!}</td>
-                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['ccontrolleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}">
+                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['ccontrolleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}" data-middleware = "{{$item['middleware']}}">
                        <i class="fa fa-pencil" onclick="Set({{$item['id']}})"></i>
                        <i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i>
                      </td>                  
@@ -111,7 +111,7 @@
                   <label class="cd-label" for="cd-name">Controller action</label>
                   <input id="controlleract" name="controlleract" type="text" placeholder="AboutusController@index">
                </div>
-               <div class="col-md-6">
+               <div class="col-md-4">
                   <label class="cd-label" for="cd-name">Method</label>
                   <select id="method" name="method">
                      <option value="get">get</option>
@@ -119,7 +119,7 @@
                      <option value="any">any</option>
                   </select>
                </div>
-               <div class="col-md-6">
+               <div class="col-md-4">
                   <label class="cd-label" for="cd-name">Parent</label>
                   <select id="parent_id" name="parent_id">
                      <option value="-1">None(dành cho trang ko có banner)</option>
@@ -128,6 +128,10 @@
                      <option value="{!!$item->id!!}">{!!$item->title!!}</option>
                      @endforeach
                   </select>
+               </div>
+			   <div class="col-md-4">
+                  <label class="cd-label" for="cd-name">Middleware</label>
+                  <input id="middleware" name="middleware" type="text" placeholder="mail,locale">
                </div>
                <div class="col-md-12 text-center">
                   <input type="submit" class="btn b-save" value="Lưu thông tin">
@@ -157,6 +161,7 @@
       SetRecordTextBox('controlleract', id_row, 'data-controlleract', '');
       SetRecordTextBox('url', id_row, 'data-url', '');
       SetRecordTextBox('route_name', id_row, 'data-route_name', '');
+      SetRecordTextBox('middleware', id_row, 'data-middleware', '');
       SetRecordComboBox('parent_id', id_row, 'data-parent_id', '');
       SetRecordComboBox('method', id_row, 'data-method', '');
       $('#myModal').modal('show');

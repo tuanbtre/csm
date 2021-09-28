@@ -35,6 +35,7 @@
         {
 			app('router')->aliasMiddleware('checkright', \Tuanbtre\Csm\Http\Middleware\CheckRight::class);	
 			app('router')->aliasMiddleware('locale', \Tuanbtre\Csm\Http\Middleware\Locale::class);	
+			app('router')->aliasMiddleware('mail', \Tuanbtre\Csm\Http\Middleware\SetMailSMTPConfig::class);	
         }
 		protected function isConsoleCommandContains($contain_options, $exclude_options = null) : bool
 		{

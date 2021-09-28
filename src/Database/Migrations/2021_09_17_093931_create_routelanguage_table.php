@@ -20,6 +20,7 @@ class CreateRoutelanguageTable extends Migration
 			$table->integer('parent_id')->default(0);
 			$table->string('controlleract', 255)->nullable()->default(null);
 			$table->string('url', 255)->nullable()->default(null);
+			$table->string('middleware', 255)->nullable()->default(null);
 			$table->string('method', 255);
 			$table->tinyInteger('language_id');
             $table->timestamps();
