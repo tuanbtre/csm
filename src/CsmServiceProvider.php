@@ -85,7 +85,7 @@
 			if (is_array($namespaceLines)) {
 				$namespaceLine = array_shift($namespaceLines);
 				$match = array();
-				preg_match('/^namespace (.*);$/', $namespaceLine, $match);
+				preg_match('/^namespace (.*);/', $namespaceLine, $match);
 				$namespace = array_pop($match);
 			}
 			// Get name of all class has in the file.
