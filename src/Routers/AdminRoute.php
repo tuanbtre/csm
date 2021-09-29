@@ -1,7 +1,8 @@
 <?php
-use App\Models\Functions;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 if(Schema::hasTable('tbl_function'))
-$r = Functions::whereNotNull('controlleract')->orderBy('parent_id')->orderBy('id')->get();
+$r = DB::table('tbl_function')->whereNotNull('controlleract')->orderBy('parent_id')->orderBy('id')->get();
 else
 $r = [];	
 Route::group(['prefix'=>'admin','namespace'=> 'App\\Http\\Controllers\\Admin', 'middleware' => ['web']], function ()use($r) {

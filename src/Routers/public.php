@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\RouteLanguage;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 if(Schema::hasTable('route_language'))
-	$rl = RouteLanguage::whereNotNull('controlleract')->orderBy('language_id')->get();
+	$rl = DB::table('route_language')->whereNotNull('controlleract')->orderBy('language_id')->get();
 else
 	$rl = [];
 Route::group(['middleware'=>'locale,web'], function () use($rl) {
