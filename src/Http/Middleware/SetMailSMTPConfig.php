@@ -28,7 +28,7 @@ class SetMailSMTPConfig
 				'from' => array('address' => $mailsmtp->from_address, 'name' => env('MAIL_FROM_NAME', 'Example')),
 				'username' => $mailsmtp->username,
 				'password' => $mailsmtp->password
-			]
+			];
 
 			\Config::set('mail', $config);
 		}			

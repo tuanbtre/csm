@@ -21,7 +21,7 @@ class PaggingController extends Controller
    public function index(request $request)
    {
       $language = Language::all();
-      $current_language = $request->l?? env('APP_LANG_ADMIN', null); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+      $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
       if($request->isMethod('get')){
          $list = Pagging::where('language_id', $current_language)->paginate(15);
          return view('csm::Pagging.index', compact('list', 'current_language', 'language'));

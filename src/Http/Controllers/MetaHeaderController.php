@@ -17,7 +17,7 @@ class MetaHeaderController extends Controller
     public function index(request $request)
     {
         $language = Language::all();
-        $current_language = $request->l?? env('APP_LANG_ADMIN', null); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+        $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
         if($request->isMethod('get')){
             $record = MetaHeader::where('language_id', $current_language)->first();
             return view('csm::MetaHeader.index', compact('record', 'current_language', 'language'));

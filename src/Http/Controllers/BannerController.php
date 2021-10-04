@@ -20,7 +20,7 @@ class BannerController extends Controller
    public function index(int $id, Request $request)
    {
       $language = Language::all();
-      $current_language = $request->l?? 2; //kiểm tra ngôn ngữ nếu không có lấy default =2
+      $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu không có lấy default =2
       $path  = "banner";
       $language_name = Language::where('id', $current_language)->value('url_name');
       $cat = BannerType::find($id);

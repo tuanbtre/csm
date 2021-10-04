@@ -8,6 +8,7 @@
 	use Illuminate\Support\Facades\Request;
 	use Illuminate\Support\Str;
 	use Symfony\Component\Console\Output\ConsoleOutput;
+	use Illuminate\Support\Arr;
 	use Illuminate\Support\ServiceProvider;
 	use Tuanbtre\Csm\Component\Navbaradmin;
     class CsmServiceProvider extends ServiceProvider {
@@ -33,6 +34,7 @@
         }
         public function register()
         {
+			$this->loadAdminAuthConfig();
 			app('router')->aliasMiddleware('checkright', \Tuanbtre\Csm\Http\Middleware\CheckRight::class);	
 			app('router')->aliasMiddleware('locale', \Tuanbtre\Csm\Http\Middleware\Locale::class);	
 			app('router')->aliasMiddleware('mail', \Tuanbtre\Csm\Http\Middleware\SetMailSMTPConfig::class);	
@@ -104,5 +106,10 @@
 				}
 			}
 			return $classes;
+		}
+		protected function loadAdminAuthConfig()
+		{
+			config(Arr::dot(config('admin.auth', []), 'auth.'));
+			config(Arr::dot(config('admin.disks', []), 'filesystems.'));
 		}
     }

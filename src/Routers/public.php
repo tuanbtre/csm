@@ -7,7 +7,7 @@ if(Schema::hasTable('route_language'))
 	$rl = DB::table('route_language')->whereNotNull('controlleract')->orderBy('language_id')->get();
 else
 	$rl = [];
-Route::group(['middleware'=>'locale,web'], function () use($rl) {
+Route::group(['middleware'=>'locale,web', 'namespace'=> 'App\\Http\\Controllers'], function () use($rl) {
 	foreach($rl as $item)
 	{
 		try{

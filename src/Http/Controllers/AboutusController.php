@@ -28,7 +28,7 @@ class AboutusController extends Controller
    public function index(Request $request)
    {
       $language = Language::all();
-      $current_language = $request->l?? env('APP_LANG_ADMIN', null); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+      $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
       $path  = "about_us";
       $strsearch = $request->search;
       $re_name  = $request->re_name? RewriteUrlUnique($request->Id, $request->re_name, 'about_us', 're_name') : RewriteUrlUnique($request->Id, $request->title, 'about_us', 're_name');

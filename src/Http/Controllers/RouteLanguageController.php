@@ -16,7 +16,7 @@ class RouteLanguageController extends Controller
    public function index(Request $request)
    {
       $language = Language::all();
-      $current_language = $request->l?? env('APP_LANG_ADMIN', null); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+      $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
       $strsearch = $request->search;
       if($request->isMethod('get')){
          $parent = RouteLanguage::where([['language_id', $current_language], ['parent_id', 0]])->get(); 

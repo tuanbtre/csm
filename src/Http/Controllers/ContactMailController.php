@@ -17,7 +17,7 @@ class ContactMailController extends Controller
    public function index(int $id = 0, Request $request)
    {
     	$language = Language::all();
-      $current_language = $request->l?? 1; //kiểm tra ngôn ngữ nếu ko có lấy default =1
+      $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default =2
       $strsearch = $request->searchstr;
       if($request->isMethod('get')){
          $list = ContactMail::where(function($query) use($strsearch){if($strsearch)$query->where('email', 'like', '%'.$strsearch.'%');})->orderBy('created_at', 'desc')->paginate(8);

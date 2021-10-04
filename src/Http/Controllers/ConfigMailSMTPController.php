@@ -17,7 +17,7 @@ public function __construct()
     public function index(request $request)
     {
         $language = Language::all();
-        $current_language = $request->l?? env('APP_LANG_ADMIN', null); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+        $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
         if($request->isMethod('get')){
             $record = ConfigMailSMTP::first();
             return view('csm::Configmailsmtp.index', compact('record', 'current_language', 'language'));
