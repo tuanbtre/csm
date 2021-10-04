@@ -4,7 +4,7 @@ namespace Tuanbtre\Csm\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\ConfigMailSMTP;
+use Illuminate\Support\Facades\DB;
 
 class SetMailSMTPConfig
 {
@@ -17,7 +17,7 @@ class SetMailSMTPConfig
      */
     public function handle(Request $request, Closure $next)
     {
-        $mailsmtp = ConfigMailSMTP::first();
+        $mailsmtp = DB::table('config_mailsmtp')->first();
 		if($mailsmtp)
 		{
 			$config = [
