@@ -1,6 +1,6 @@
 <?php
 
-namespace Tuanbtre\Csm\Models;
+namespace DummyNamespace;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,7 +37,7 @@ class User extends Authenticatable
      */
     public function func()
     {
-        return $this->belongsToMany('App\Models\Functions', 'tbl_permission', 'user_id', 'function_id');
+        return $this->belongsToMany('DummyNamespace\Functions', 'tbl_permission', 'user_id', 'function_id');
     }
 
     public function hasAccess(string $permissions) : bool

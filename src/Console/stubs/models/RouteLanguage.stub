@@ -1,6 +1,6 @@
 <?php
 
-namespace Tuanbtre\Csm\Models;
+namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +15,7 @@ class RouteLanguage extends Model
    ];
    public function language()
    {
-      return $this->belongsTo('App\Models\Language', 'language_id', 'id');
+      return $this->belongsTo('DummyNamespace\Language', 'language_id', 'id');
    }
    public $timestamps = true;
 }

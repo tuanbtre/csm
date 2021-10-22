@@ -1,6 +1,6 @@
 <?php
 
-namespace Tuanbtre\Csm\Models;
+namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,15 +15,15 @@ class Functions extends Model
     
    public function users()
    {
-      return $this->belongsToMany('App\Models\User', 'tbl_permission', 'function_id', 'user_id');
+      return $this->belongsToMany('DummyNamespace\User', 'tbl_permission', 'function_id', 'user_id');
    }
 
    public function sub(){
-      return $this->hasMany('App\Models\Functions', 'parent_id', 'id');
+      return $this->hasMany('DummyNamespace\Functions', 'parent_id', 'id');
    }
    public function parent()
    {
-      return $this->belongsTo('App\Models\Functions', 'parent_id', 'id');
+      return $this->belongsTo('DummyNamespace\Functions', 'parent_id', 'id');
    }
    public function hasAccess(string $permissions) : bool
    {

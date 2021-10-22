@@ -70,12 +70,12 @@ return [
     | Laravel-admin install directory
     |--------------------------------------------------------------------------
     |
-    | The installation directory of the controller and routing configuration
-    | files of the administration page. The default is `app/Admin`, which must
+    | The installation directory of the controller | files of the administration page. The default is `Http/Controllers/Admin`, which must
     | be set before running `artisan admin::install` to take effect.
     |
     */
-    'directory' => app_path('Admin'),
+    'adminpath' => app_path('Http/Controllers/Admin'),
+	'modelpath' => app_path('Models'),
 
     /*
     |--------------------------------------------------------------------------
