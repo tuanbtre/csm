@@ -29,6 +29,6 @@
 		protected function loadAdminAuthConfig()
 		{
 			config(Arr::dot(config('admin.auth', []), 'auth.'));
-			config(Arr::dot(config('admin.disks', []), 'filesystems.'));
+			config(Arr::dot(config('admin.filesystems', []), 'filesystems.'));
 		}
     }

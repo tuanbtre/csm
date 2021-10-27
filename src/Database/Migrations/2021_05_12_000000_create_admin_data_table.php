@@ -18,15 +18,15 @@ class CreateAdminDataTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('username');
-            $table->string('image', 255)->nullable()->default(null);
+            $table->string('image', 255)->nullable();
             $table->tinyInteger('isadmin')->default(0);
             $table->string('email')->unique();
-			$table->string('phone', 20)->nullable()->default(null);
-			$table->string('address', 255)->nullable()->default(null);
+			$table->string('phone', 20)->nullable();
+			$table->string('address', 255)->nullable();
 			$table->tinyInteger('isactive')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken()->nullable()->default(null);
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
 		Schema::create('route_language', function (Blueprint $table) {
@@ -34,24 +34,24 @@ class CreateAdminDataTable extends Migration
 			$table->string('route_name', 255);
 			$table->string('title', 255);
 			$table->integer('parent_id')->default(0);
-			$table->string('controlleract', 255)->nullable()->default(null);
-			$table->string('url', 255)->nullable()->default(null);
-			$table->string('middleware', 255)->nullable()->default(null);
+			$table->string('controlleract', 255)->nullable();
+			$table->string('url', 255)->nullable();
+			$table->string('middleware', 255)->nullable();
 			$table->string('method', 255);
 			$table->tinyInteger('language_id');
             $table->timestamps();
         });
 		Schema::create('tbl_function', function (Blueprint $table) {
             $table->id();
-			$table->string('icon', 255)->nullable()->default(null);
-			$table->string('controlleract', 255)->nullable()->default(null);
-			$table->string('url', 255)->nullable()->default(null);
-			$table->string('method', 255);
-			$table->string('title_en', 255);
+			$table->string('icon', 255)->nullable();
+			$table->string('controlleract', 255)->nullable();
+			$table->string('url', 255)->nullable();
+			$table->string('method', 255)->nullable();
+			$table->string('title_en', 255)->nullable();
 			$table->string('title_vn', 255);
-			$table->string('description', 255)->nullable()->default(null);
-			$table->string('function_tab', 255);
-			$table->string('route_name', 255)->nullable()->default(null);
+			$table->string('description', 255)->nullable();
+			$table->string('function_tab', 255)->nullable();
+			$table->string('route_name', 255)->nullable();
 			$table->tinyInteger('can_grant')->default(0);
 			$table->tinyInteger('isshow')->default(0);
 			$table->integer('parent_id')->default(0);
@@ -59,9 +59,9 @@ class CreateAdminDataTable extends Migration
         });
 		Schema::create('tbl_language', function (Blueprint $table) {
             $table->id();
-			$table->string('lang_name', 255)->nullable()->default(null);
-			$table->string('url_name', 255)->nullable()->default(null);
-			$table->string('flag', 50)->nullable()->default(null);			
+			$table->string('lang_name', 255)->nullable();
+			$table->string('url_name', 255)->nullable();
+			$table->string('flag', 50)->nullable();			
         });
 		Schema::create('tbl_permission', function (Blueprint $table) {
             $table->id();
@@ -233,8 +233,8 @@ class CreateAdminDataTable extends Migration
 			$table->string('mail_port', 255);
 			$table->string('username', 255);
 			$table->string('password', 255);
-			$table->string('encryption', 255)->default(null)->nullable();
-			$table->string('from_address', 255)->default(null)->nullable();
+			$table->string('encryption', 255)->nullable();
+			$table->string('from_address', 255)->nullable();
             $table->timestamps();
         });
     }

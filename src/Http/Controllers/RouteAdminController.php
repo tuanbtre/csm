@@ -59,12 +59,10 @@ class RouteAdminController extends Controller
    protected function validateForm(Request $request)
    {
       $this->validate($request, [
-         'title_vn' => 'required',
-         'method' => 'required'
+         'title_vn' => 'required'
       ],
       [
-         'title_vn.required'=>'Vui lòng nhập vào tên router',
-         'method.required'=>'Vui lòng nhập vào tên phương thức'
+         'title_vn.required'=>'Vui lòng nhập vào tên router'
       ]);
    }
 }

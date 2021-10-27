@@ -81,7 +81,7 @@
          </div>
       <div class="modal-body areaform">
          <section class="bg-white">
-          <form name="MainForm" class="cd-form floating-labels" method="post" action="{!!route('admin.routepublic.index')!!}" enctype="multipart/form-data">
+          <form name="MainForm" class="cd-form floating-labels" method="post" action="{!!route('admin.routeadmin.index')!!}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" id="Id" name="Id" value="0">
             <input type="Hidden" id="deleteMode" name="deleteMode" value="0">
@@ -125,6 +125,7 @@
                <div class="col-md-6">
                   <label class="cd-label" for="cd-name">Method</label>
                   <select id="method" name="method">
+					 <option value="">none</option>
                      <option value="get">get</option>
                      <option value="post">post</option>
                      <option value="any">any</option>
@@ -197,6 +198,13 @@
    }
    function DDLLanguageChange(_lang) {
       document.location.href = '{{url('admin/route-admin')}}?l=' + _lang;
+   }
+   function View(field) {
+      var filename = $('#' + field).val();
+      if (filename == '') return;
+      var path = '{{url('images/icon')}}/' + filename;
+      var newWin = window.open("{{url('admin/quanly-hethong')}}?fn=" + path, "PREVIEW", "width=150, height=200");
+      newWin.focus();
    }
    $("#delivery_book").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
    $("#delivery_date").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
