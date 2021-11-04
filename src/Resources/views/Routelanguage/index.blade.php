@@ -63,7 +63,7 @@
                      <td>{!!$item->controlleract!!}</td>
                      <td>{!!$item->method!!}</td>
                      <td>{!!$item->url!!}</td>
-                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['ccontrolleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}" data-middleware = "{{$item['middleware']}}">
+                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['controlleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}" data-middleware = "{{$item['middleware']}}">
                        <i class="fa fa-pencil" onclick="Set({{$item['id']}})"></i>
                        <i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i>
                      </td>                  

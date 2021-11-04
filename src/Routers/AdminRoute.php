@@ -41,7 +41,7 @@ Route::group(['prefix'=>'admin','namespace'=> 'App\\Http\\Controllers\\Admin', '
    Route::any('route-public', ['as'=>'admin.routepublic.index','uses'=>'RouteLanguageController@index']);
    Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditorupload');
    Route::post('ckeditor/pasteanddrop', 'CKEditorController@pasteanddrop')->name('ckeditorpasteanddrop');
-   Route::any('{all?}', function(){return Redirect::route('admin.home')->with(['Flass_Message'=>'Liên kết không tồn tại']);})->where('all','(.*)');
+   Route::fallback(function(){return Redirect::route('admin.home')->with(['Flass_Message'=>'Liên kết không tồn tại']);});
 });
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
      \UniSharp\LaravelFilemanager\Lfm::routes();

@@ -44,7 +44,7 @@ class NewsTypeController extends Controller
          $record->delete();
          return redirect()->back()->with(['Flass_Message'=>'Xóa dữ liệu thành công']);
       }else{
-         $this->validateNewstype($request); // validate database
+         $this->validateform($request); // validate database
          $fileimage = FunctionUpload($request->isDelete, $path, 'image', $request->oldimage);
          $priority = $request->priority==0? NewsType::where('language_id', $request->l)->max('priority')+1 : $request->priority;
          $record = NewsType::updateOrCreate(
@@ -59,7 +59,7 @@ class NewsTypeController extends Controller
          return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
       }
    }    
-   protected function validateNewstype(Request $request)
+   protected function validateform(Request $request)
    {
       $this->validate($request, [
          'title' => 'required',

@@ -22,7 +22,9 @@
                   <td style="width: 70%; vertical-align: top">
                      <form id="MainForm" method="post" action="{{route('admin.configmailsmtp.index')}}" name="MainForm" enctype="multipart/form-data">
                         @csrf
-                        <input type="Hidden" id="l" name="l" value="{!!$current_language!!}">
+                        <input type="Hidden" id="Id" name="Id" value="{!!$record? $record->id:0!!}">
+						<input type="Hidden" id="l" name="l" value="{!!$current_language!!}">
+						<input type="Hidden" id="deleteMode" name="deleteMode" value="0">
                         <table class="table-condensed table-responsive" style="width:100%">
                            <thead>
                                <tr>
@@ -50,7 +52,7 @@
                                  <label for="mail_host" class="control-label">Mail host</label>
                               </td>
                               <td>
-                                 <input type="Text" value="{!! $record['mail_host'] !!}" id="mail_host" name="mail_host" class="form-control">
+                                 <input type="Text" value="{!! $record['mail_host'] !!}" id="mail_host" name="mail_host" class="form-control" required>
                               </td>
                            </tr>                        
                            <tr>
@@ -58,7 +60,7 @@
                                  <label for="mail_port" class="control-label">Mail port</label>
                               </td>
                               <td>
-								<input type="Text" value="{!! $record['mail_port'] !!}" id="mail_port" name="mail_port" class="form-control">
+								<input type="Text" value="{!! $record['mail_port'] !!}" id="mail_port" name="mail_port" class="form-control" required>
                               </td>
                            </tr>
                            <tr>
@@ -66,7 +68,7 @@
                                  <label for="username" class="control-label">Mail username</label>
                               </td>
                               <td>
-                                 <input type="Text" value="{!! $record['username'] !!}" id="username" name="username" class="form-control">
+                                 <input type="Text" value="{!! $record['username'] !!}" id="username" name="username" class="form-control" required>
                               </td>
                            </tr>
 						   <tr>
@@ -74,7 +76,7 @@
                                  <label for="password" class="control-label">Mail password</label>
                               </td>
                               <td>
-                                 <input type="Text" value="{!! $record['password'] !!}" id="password" name="password" class="form-control">
+                                 <input type="Text" value="{!! $record['password'] !!}" id="password" name="password" class="form-control" required>
                               </td>
                            </tr>
 						   <tr>
@@ -97,6 +99,7 @@
                               <td></td>
                               <td align="left">
                                  <input class="btn btn-default" type="submit" id="btnSave" name="btnSave" value="Lưu"/>
+								 <input class="btn btn-default" type="button" id="btnDelete" name="btnDelete" value="Xóa" onclick="SetDeleteMode(event)"/>
                               </td>
                            </tr>
                         </table>
@@ -115,6 +118,15 @@
    <script src="{{asset('vendor/csm/js/admintool.js')}}"></script>
    <script src="{{asset('vendor/csm/js/number.js')}}"></script>
    <script type="text/javascript">
+   function SetDeleteMode(event) {
+        if ($('#Id').val() == 0)
+        {  event.preventDefault();
+           return false;
+        }else if(confirm('Bạn có thật sự muốn xóa phần tử này không?')) {
+            $('#deleteMode').val('1');
+            document.forms["MainForm"].submit();
+        }
+    }
    function View(_image) {
       if (_image == '') return;
       var path = '{{url('images')}}/' + _image;

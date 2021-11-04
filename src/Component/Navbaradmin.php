@@ -30,10 +30,10 @@ class Navbaradmin extends Component
         {
             if(Auth::guard('admin')->user()->isadmin)
             {
-                $listfunc   = Functions::where('isshow', 1)->orderBy('id')->get();   
+                $listfunc   = Functions::where('isshow', 1)->orderBy('parent_id')->orderBy('id')->get();   
             }else{
                 $listright = Auth::user()->func()->where('isshow', 1)->pluck('tbl_function.id'); 
-                $listfunc = Functions::where([['isshow', 1],['can_grant', 0]])->orWhereIn('id', $listright)->orderBy('id')->get();               
+                $listfunc = Functions::where([['isshow', 1],['can_grant', 0]])->orWhereIn('id', $listright)->orderBy('parent_id')->orderBy('id')->get();               
             }
             return view('csm::components.navbaradmin', compact('listfunc'));               
         }

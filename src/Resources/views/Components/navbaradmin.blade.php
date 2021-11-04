@@ -3,7 +3,7 @@
     	@foreach($listfunc->where('parent_id', 0) as $item)
       <li class="site-menu-item has-sub">
         	<a href="{!!$item->controlleract? route($item->route_name) : '#'!!}">
-          	<i><img src="{{asset('vendor/csm/images/icon/'.$item->icon)}}" alt=""/></i>
+          	<i><img src="{{asset('images/icon/'.$item->icon)}}" alt=""/></i>
           	<span class="site-menu-title">{{$item->title_vn}}</span>	
           	@if($item->sub->count())
 			  	<span class="site-menu-arrow"></span>

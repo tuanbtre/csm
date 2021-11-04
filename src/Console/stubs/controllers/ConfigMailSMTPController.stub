@@ -21,8 +21,13 @@ public function __construct()
         if($request->isMethod('get')){
             $record = ConfigMailSMTP::first();
             return view('csm::Configmailsmtp.index', compact('record', 'current_language', 'language'));
+        }elseif($request->deleteMode==1){
+            $record = ConfigMailSMTP::find(1);
+            if($record)
+                $record->delete();
+            return redirect()->back()->with(['Flass_Message'=>'Xóa dữ liệu thành công']);
         }else{
-            $this->validateMetaheader($request);
+            $this->validateform($request);
             DB::table('config_mailsmtp')->upsert(['id'=>1, 'mail_host'=>$request->mail_host, 'mail_port'=>$request->mail_port, 'username'=>$request->username, 'password'=>$request->password, 'encryption'=>$request->encryption, 'from_address'=>$request->from_address], ['id']);
             return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
         }

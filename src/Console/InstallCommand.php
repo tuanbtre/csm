@@ -50,6 +50,7 @@ class InstallCommand extends Command
     }
 	public function initPublish(){
 		$this->call('vendor:publish', ['--provider' => \Tuanbtre\Csm\CsmServiceProvider::class]);
+		$this->call('vendor:publish', ['--tag' => 'lfm_public']);
 	}
 	public function initDatabase()
     {

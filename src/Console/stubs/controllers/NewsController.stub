@@ -46,7 +46,7 @@ class NewsController extends Controller
          $record->delete();
          return redirect()->back()->with(['Flass_Message'=>'Xóa dữ liệu thành công']);
       }else{
-         $this->validateNews($request); // validate database
+         $this->validateform($request); // validate database
          $fileimage = FunctionUpload($request->isDelete, $path, 'image', $request->oldimage);
          $priority = $request->priority==0? News::where('cat_id', $request->cat_id)->max('priority')+1 : $request->priority;
          $record = News::updateOrCreate(
@@ -84,7 +84,7 @@ class NewsController extends Controller
          return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
       }
    }
-   protected function validateNews(Request $request)
+   protected function validateform(Request $request)
    {
       $this->validate($request, [
         'title' => 'required',

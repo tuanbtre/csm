@@ -34,8 +34,8 @@ class Locale
             $language = $route? $route->language->url_name : null;
          }              
       }else{
-         $route = DB::table('route_language')->where('route_name', $currentRouteName)->first();
-         $language = $route? $route->language->url_name : null;
+         $route = DB::table('route_language')->join('tbl_language', 'route_language.language_id', '=', 'tbl_language.id')->where('route_name', $currentRouteName)->select('tbl_language.url_name')->first();
+         $language = $route? $route->url_name : null;
       }
       if($language)
          return $language;

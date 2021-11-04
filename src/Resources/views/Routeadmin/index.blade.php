@@ -94,15 +94,15 @@
                </div>
 			   <div class="col-md-6">
                   <label class="cd-label" for="cd-name">Tên route(route_name)</label>
-                  <input id="route_name" name="route_name" type="text" placeholder="gioithieu">
+                  <input id="route_name" name="route_name" type="text" placeholder="admin.news.detail">
                </div>
                <div class="col-md-6">
                   <label class="cd-label" for="cd-name">Tên url</label>
-                  <input id="url" name="url" type="text" placeholder="gioithieu/{name?}">
+                  <input id="url" name="url" type="text" placeholder="news">
                </div>
                <div class="col-md-6">
                   <label class="cd-label" for="cd-name">Controller action</label>
-                  <input id="controlleract" name="controlleract" type="text" placeholder="AboutusController@index">
+                  <input id="controlleract" name="controlleract" type="text" placeholder="NewsController@index">
                </div>
 			   <div class="col-md-6">
                   <label class="cd-label" for="cd-name">description</label>
