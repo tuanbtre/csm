@@ -27,7 +27,7 @@ class NewsTypeController extends Controller
             $list =NewsType::where([['language_id', $current_language], ['title', 'like', '%'.$strsearch.'%']])->orderBy('priority','desc')->paginate(15);  
          else
             $list =NewsType::where('language_id', $current_language)->orderBy('priority','desc')->paginate(15);  
-         return view('csm::News.index', compact('list','current_language', 'language'));
+         return view('Admin.News.index', compact('list','current_language', 'language'));
       }elseif($request->deleteMode==1){//Xóa
          $record = NewsType::find($request->Id);
          $subcount = News::where('cat_id', $request->Id)->count();

@@ -20,7 +20,7 @@ class MetaHeaderController extends Controller
         $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
         if($request->isMethod('get')){
             $record = MetaHeader::where('language_id', $current_language)->first();
-            return view('csm::MetaHeader.index', compact('record', 'current_language', 'language'));
+            return view('Admin.MetaHeader.index', compact('record', 'current_language', 'language'));
         }else{
             $this->validateMetaheader($request);
             if($request->hasfile('image')){

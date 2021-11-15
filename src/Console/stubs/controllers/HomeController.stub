@@ -43,7 +43,7 @@ class HomeController extends Controller
             $totalvisitor = null;
             $error = 'Không liên kết được google analytic';
         }
-        return view('csm::home', compact('data', 'toprefer', 'topbrowpercent', 'totalvisitor', 'error'));
+        return view('Admin.home', compact('data', 'toprefer', 'topbrowpercent', 'totalvisitor', 'error'));
     }
     protected function getallvisitor(Period $period): int
     {

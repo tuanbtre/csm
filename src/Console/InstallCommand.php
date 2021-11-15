@@ -3,6 +3,9 @@
 namespace Tuanbtre\Csm\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class InstallCommand extends Command
 {
@@ -47,6 +50,14 @@ class InstallCommand extends Command
         $this->initDatabase();
         $this->initModel();
         $this->initController();
+        $this->initRouter();
+        $this->initMiddleware();
+		copy(__DIR__.'/../Configs/auth.php', base_path('config/auth.php'));
+		copy(__DIR__.'/../Configs/filesystems.php', base_path('config/filesystems.php'));
+		copy(__DIR__.'/../Configs/filesystems.php_host', base_path('config/filesystems.php_host'));
+		(new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
+        (new Filesystem)->copyDirectory(__DIR__.'/stubs/Components', app_path('View/Components'));
+		$this->info('CSM scaffolding installed successfully.');
     }
 	public function initPublish(){
 		$this->call('vendor:publish', ['--provider' => \Tuanbtre\Csm\CsmServiceProvider::class]);
@@ -55,20 +66,20 @@ class InstallCommand extends Command
 	public function initDatabase()
     {
         $this->call('migrate');
-		$m_language = \Tuanbtre\Csm\Models\Language::class;
-        if ($m_language::count() == 0) {
+		$m_language = DB::table('tbl_language')->count();
+        if (!$m_language) {
             $this->call('db:seed', ['--class' => \Tuanbtre\Csm\Database\Seeds\LanguageSeeder::class]);
         }
-		$m_function = \Tuanbtre\Csm\Models\Functions::class;
-        if ($m_function::count() == 0) {
+		$m_function = DB::table('tbl_function')->count();
+        if (!$m_function) {
             $this->call('db:seed', ['--class' => \Tuanbtre\Csm\Database\Seeds\FunctionSeeder::class]);
         }
-		$m_user = \Tuanbtre\Csm\Models\User::class;
-        if ($m_user::count() == 0) {
+		$m_user = DB::table('users')->count();
+        if (!$m_user) {
             $this->call('db:seed', ['--class' => \Tuanbtre\Csm\Database\Seeds\UserSeeder::class]);
         }
-		$m_routelanguage = \Tuanbtre\Csm\Models\RouteLanguage::class;
-        if ($m_routelanguage::count() == 0) {
+		$m_routelanguage = DB::table('route_language')->count();
+        if (!$m_routelanguage) {
             $this->call('db:seed', ['--class' => \Tuanbtre\Csm\Database\Seeds\RouteLanguage::class]);
         }
     }
@@ -284,7 +295,8 @@ class InstallCommand extends Command
 	
 	protected function initController()
     {
-        $this->adminpath = config('admin.adminpath', app_path('Http/Controllers/Admin'));
+        copy(__DIR__.'/../Http/Controllers/Controller.php', app_path('Http/Controllers/Controller.php'));
+		$this->adminpath = config('admin.adminpath', app_path('Http/Controllers/Admin'));
 
         if (is_dir($this->adminpath)) {
             $this->line("<error>{$this->adminpath} directory already exists !</error> ");
@@ -568,6 +580,33 @@ class InstallCommand extends Command
             str_replace('DummyNamespace', 'App\\Http\\Controllers\\Admin', $contents)
         );
         $this->line('<info>UserpermissionController.php file was created:</info> '.str_replace(base_path(), '', $userpermissioncontroller));
+    }
+	public function initRouter(){
+		copy(__DIR__.'/stubs/router/web.php', base_path('routes/web.php'));
+        copy(__DIR__.'/stubs/router/admin.php', base_path('routes/admin.php'));
+        copy(__DIR__.'/stubs/router/public.php', base_path('routes/public.php'));
+	}
+	public function initMiddleware(){
+		copy(__DIR__.'/stubs/middleware/Authenticate.php', app_path('Http/Middleware/Authenticate.php'));
+		copy(__DIR__.'/stubs/middleware/CheckRight.php', app_path('Http/Middleware/CheckRight.php'));
+		copy(__DIR__.'/stubs/middleware/Locale.php', app_path('Http/Middleware/Locale.php'));
+		copy(__DIR__.'/stubs/middleware/SetMailSMTPConfig.php', app_path('Http/Middleware/SetMailSMTPConfig.php'));
+		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\CheckRight::class', 'checkright');
+		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\Locale::class', 'locale');
+		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\SetMailSMTPConfig::class', 'mail');
+	}
+	protected function installMiddlewareAfter($after, $name, $alias)
+    {
+        $httpKernel = file_get_contents(app_path('Http/Kernel.php'));
+        $routemiddleware = Str::before(Str::after($httpKernel, '$routeMiddleware = ['), '];');        
+        if (! Str::contains($routemiddleware, $name)) {
+            $modifiedRouteMiddlewareGroup = str_replace(
+                $after.',',
+                $after.','.PHP_EOL.'        \''.$alias.'\'=>'.$name.',',
+                $routemiddleware,
+            );
+            file_put_contents(app_path('Http/Kernel.php'), str_replace($routemiddleware, $modifiedRouteMiddlewareGroup, $httpKernel));
+        }
     }
 	protected function getStub($name)
     {

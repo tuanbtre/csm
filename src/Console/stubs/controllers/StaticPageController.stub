@@ -24,7 +24,7 @@ class StaticPageController extends Controller
             $list = StaticPage::where([['language_id', $current_language], ['title', 'like', '%'.$strsearch.'%']])->paginate(15);
          else
             $list = StaticPage::where('language_id', $current_language)->paginate(15);
-         return view('csm::Staticpage.index', compact('list', 'current_language', 'language'));    
+         return view('Admin.Staticpage.index', compact('list', 'current_language', 'language'));    
       }elseif($request->deleteMode==1){//Xóa
          $record = StaticPage::find($request->Id);
          $image = $record->image;

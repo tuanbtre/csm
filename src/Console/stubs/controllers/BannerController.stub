@@ -26,9 +26,9 @@ class BannerController extends Controller
       $cat = BannerType::find($id);
       if($request->isMethod('get')){
          if($cat->type==1)
-            $tmpl = 'csm::Banner.video';
+            $tmpl = 'Admin.Banner.video';
          else
-            $tmpl = 'csm::Banner.image';     
+            $tmpl = 'Admin.Banner.image';     
          $list = Banner::where('cat_id', $id)->orderBy('priority', 'desc')->paginate(15);
          return view($tmpl, compact('list', 'cat', 'current_language', 'language'));
       }elseif($request->deleteMode==1){

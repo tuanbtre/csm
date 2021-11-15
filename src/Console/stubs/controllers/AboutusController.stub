@@ -34,7 +34,7 @@ class AboutusController extends Controller
       $re_name  = $request->re_name? RewriteUrlUnique($request->Id, $request->re_name, 'about_us', 're_name') : RewriteUrlUnique($request->Id, $request->title, 'about_us', 're_name');
       if($request->isMethod('get')){
          $list = About_us::where('language_id', $current_language)->where(function ($query) use($strsearch) {if($strsearch)$query->where('title', 'like', '%'.$strsearch.'%');})->orderBy('priority', 'desc')->paginate(15);
-         return view('csm::Aboutus.index', compact('list', 'current_language', 'language'));
+         return view('Admin.Aboutus.index', compact('list', 'current_language', 'language'));
       }elseif($request->deleteMode==1){
          $record = About_us::find($request->Id);
          $image = $record->image;

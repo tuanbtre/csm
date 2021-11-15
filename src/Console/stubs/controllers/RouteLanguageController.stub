@@ -21,7 +21,7 @@ class RouteLanguageController extends Controller
       if($request->isMethod('get')){
          $parent = RouteLanguage::where([['language_id', $current_language], ['parent_id', 0]])->get(); 
          $list = RouteLanguage::where('language_id', $current_language)->where(function ($query) use($strsearch) {if($strsearch)$query->where('title', 'like', '%'.$strsearch.'%');})->orderBy('id')->paginate(15);
-         return view('csm::Routelanguage.index', compact('list', 'parent', 'current_language', 'language'));
+         return view('Admin.Routelanguage.index', compact('list', 'parent', 'current_language', 'language'));
       }elseif($request->deleteMode==1){
          $record = RouteLanguage::find($request->Id);
          $record->delete();

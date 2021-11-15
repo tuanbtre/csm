@@ -20,7 +20,7 @@ class CompanyInfoController extends Controller
       $path  = "companyinfo";
       if($request->isMethod('get')){
          $list = CompanyInfo::where('language_id', $current_language)->orderBy('priority')->paginate(15);        
-         return view('csm::CompanyInfo.index', compact('list', 'current_language', 'language'));
+         return view('Admin.CompanyInfo.index', compact('list', 'current_language', 'language'));
       }elseif($request->deleteMode==1){//Xóa
          $record = CompanyInfo::find($request->Id);
          $image = $record->image;

@@ -31,7 +31,7 @@ class NewsController extends Controller
             $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->where('title', 'like', '%'.$strsearch.'%')->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated'))->orderBy('priority', 'desc')->paginate(15);
          else
             $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated'))->orderBy('priority', 'desc')->paginate(15);
-         return view('csm::News.detail', compact('list', 'listcat', 'current_language', 'language'));
+         return view('Admin.News.detail', compact('list', 'listcat', 'current_language', 'language'));
       }elseif($request->deleteMode==1){
          $record = News::find($request->Id);
          $image = $record->image;

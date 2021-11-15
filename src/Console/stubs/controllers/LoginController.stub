@@ -47,7 +47,7 @@ class LoginController extends Controller
     // overite funtion showLoginForm on trait AuthenticatesUsers;
     public function showLoginForm()
     {
-        return view('csm::login');
+        return view('Admin.login');
     }
     public function login(Request $request)
     {

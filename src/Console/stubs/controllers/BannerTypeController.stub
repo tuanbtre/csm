@@ -25,7 +25,7 @@ class BannerTypeController extends Controller
       if($request->isMethod('get')){
          $list = BannerType::where('language_id', $current_language)->orderBy('priority', 'desc')->paginate(15);
          $listpage = StaticPage::where([['language_id', $current_language], ['isactive', 1]])->orderBy('priority', 'desc')->get();
-         return view('csm::Banner.index', compact('list', 'current_language', 'language', 'listrouter', 'listpage'));
+         return view('Admin.Banner.index', compact('list', 'current_language', 'language', 'listrouter', 'listpage'));
       }elseif($request->deleteMode==1){
          $record = BannerType::find($request->Id);
          $subcount = Banner::where('cat_id', $request->Id)->count();

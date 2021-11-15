@@ -23,7 +23,7 @@ class AdvertisementController extends Controller
       $re_name  = Str::slug($request->title, '-');
       if($request->isMethod('get')){
             $list = Advertisement::where('language_id', $current_language)->paginate(15);
-            return view('csm::Advertisement.index', compact('list', 'current_language', 'language'));
+            return view('Admin.Advertisement.index', compact('list', 'current_language', 'language'));
       }elseif($request->deleteMode==1){//Xóa
          $record = Advertisement::find($request->Id);
          $image = $record->image;

@@ -20,7 +20,7 @@ public function __construct()
         $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
         if($request->isMethod('get')){
             $record = ConfigMailSMTP::first();
-            return view('csm::Configmailsmtp.index', compact('record', 'current_language', 'language'));
+            return view('Admin.Configmailsmtp.index', compact('record', 'current_language', 'language'));
         }elseif($request->deleteMode==1){
             $record = ConfigMailSMTP::find(1);
             if($record)

@@ -22,7 +22,7 @@ class RouteAdminController extends Controller
       if($request->isMethod('get')){
          $parent = Functions::where('parent_id', 0)->get(); 
          $list = Functions::where(function ($query) use($strsearch) {if($strsearch)$query->where('title', 'like', '%'.$strsearch.'%');})->orderBy('parent_id')->orderBy('id')->paginate(15);
-         return view('csm::Routeadmin.index', compact('list', 'parent', 'current_language', 'language'));
+         return view('Admin.Routeadmin.index', compact('list', 'parent', 'current_language', 'language'));
       }elseif($request->deleteMode==1){
          $record = Functions::find($request->Id);
 		 $icon = $record->icon;

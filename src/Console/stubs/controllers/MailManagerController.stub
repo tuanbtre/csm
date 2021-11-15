@@ -16,7 +16,7 @@ class MailManagerController extends Controller
    {
       if($request->isMethod('get')){
          $list = MailManager::paginate(15);
-        return view('csm::Mailmanager.index', compact('list'));        
+        return view('Admin.Mailmanager.index', compact('list'));        
       }elseif($request->deleteMode==1){
          $record = MailManager::find($request->Id);
          $record->delete();

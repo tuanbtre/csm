@@ -21,7 +21,7 @@ class ContactMailController extends Controller
       $strsearch = $request->searchstr;
       if($request->isMethod('get')){
          $list = ContactMail::where(function($query) use($strsearch){if($strsearch)$query->where('email', 'like', '%'.$strsearch.'%');})->orderBy('created_at', 'desc')->paginate(8);
-         return view('csm::Contactmail.index', compact('list', 'current_language', 'language'));
+         return view('Admin.Contactmail.index', compact('list', 'current_language', 'language'));
       }elseif($request->deleteMode==1){//Xóa
          $record = ContactMail::find($request->Id);
          $record->delete();
