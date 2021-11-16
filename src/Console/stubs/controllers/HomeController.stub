@@ -60,6 +60,6 @@ class HomeController extends Controller
     public function viewfile()
     {
         $ext = strtolower(substr(request()->fn, -3));
-        return view('csm::view_picture', compact('ext'));
+        return view('Admin.view_picture', compact('ext'));
     }    
 }
