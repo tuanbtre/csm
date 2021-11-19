@@ -79,7 +79,7 @@ class UsermanagerController extends Controller
 					$recorduser->isactive = ($request->isactive==1)? 1 : 0;	
 				}            
 				$recorduser->save();
-				return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+				return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
 			}	
 		}		
     }
@@ -100,7 +100,7 @@ class UsermanagerController extends Controller
             'email.required'	=> 'Email không được để trống',
             'email.unique' => 'Email đã tồn tại',
             'password.required'	=> 'Mật khẩu không được để trống',
-            'password_confirmation.required_with'	=>'chưa xác nhận mật khẩu',
+            'password_confirmation.required_with'	=>'Chưa xác nhận mật khẩu',
             'password_confirmation.same'	=> 'Xác nhận mật khẩu không trùng khớp' 
         ]);
     }
@@ -112,7 +112,7 @@ class UsermanagerController extends Controller
         ],
         [
             'password.required'	=> 'Mật khẩu không được để trống',
-            'password_confirmation.required_with'	=>'chưa xác nhận mật khẩu',
+            'password_confirmation.required_with'	=>'Chưa xác nhận mật khẩu',
             'password_confirmation.same'	=> 'Xác nhận mật khẩu không trùng khớp' 
         ]);
     }

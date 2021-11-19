@@ -45,7 +45,7 @@ class BannerTypeController extends Controller
              'language_id'=>$request->l,
              'isactive'=>($request->isactive==1)? 1 : 0
          ]);             
-         return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+         return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
       }        
    }
    //Kiểm tra dữ liệu 

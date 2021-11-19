@@ -81,7 +81,7 @@ class NewsController extends Controller
             $record->updated_at = Carbon::createFromFormat('d/m/Y H:i', $request->updated_at)->format('Y-m-d H:i');
             $record->save();
          }
-         return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+         return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
       }
    }
    protected function validateform(Request $request)

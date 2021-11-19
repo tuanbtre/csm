@@ -53,7 +53,7 @@ class RouteAdminController extends Controller
 			 'can_grant'=>($request->can_grant==1)? 1 : 0,
 			 'isshow'=>($request->isshow==1)? 1 : 0,
          ]);
-         return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+         return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
       }
    }
    protected function validateForm(Request $request)

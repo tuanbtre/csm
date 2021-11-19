@@ -40,7 +40,7 @@ class PaggingController extends Controller
              'priority'=>$priority,
              'language_id'=>$request->l,
             ]);             
-         return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+         return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
       }    
    }    
    //Kiểm tra dữ liệu 

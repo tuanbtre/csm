@@ -39,7 +39,7 @@ class RouteLanguageController extends Controller
              'parent_id'=>$request->parent_id,
              'language_id'=>$request->l
          ]);
-         return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+         return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
       }
    }
    protected function validateForm(Request $request)

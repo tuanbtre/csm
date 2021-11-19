@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => realpath(base_path().'/../public_html/storage'),
+            'root' => storage_path('app/storage'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -64,7 +64,7 @@ return [
 
         'images' => [
             'driver' => 'local',
-            'root' => realpath(base_path().'/../public_html/images'),
+            'root' => storage_path('app/images'),
             'url' => env('APP_URL').'/images',
             'visibility' => 'public',
         ],
@@ -92,7 +92,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/storage'),
         public_path('images') => storage_path('app/images'),
     ],
 

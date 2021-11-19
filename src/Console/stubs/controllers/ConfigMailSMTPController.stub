@@ -29,7 +29,7 @@ public function __construct()
         }else{
             $this->validateform($request);
             DB::table('config_mailsmtp')->upsert(['id'=>1, 'mail_host'=>$request->mail_host, 'mail_port'=>$request->mail_port, 'username'=>$request->username, 'password'=>$request->password, 'encryption'=>$request->encryption, 'from_address'=>$request->from_address], ['id']);
-            return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+            return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
         }
     }
     //Kiểm tra dữ liệu 

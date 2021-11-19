@@ -29,7 +29,7 @@ class MetaHeaderController extends Controller
             }else
                 $file_name = '';    
             DB::table('meta_header')->upsert(['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name], ['language_id']);
-            return redirect()->back()->with(['Flass_Message'=>'cập nhật dữ liệu thành công']);
+            return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
         }
     }
     //Kiểm tra dữ liệu 
