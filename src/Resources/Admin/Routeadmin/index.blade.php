@@ -69,7 +69,7 @@
    </div>
    @endif
    @if($list->lastPage()>1)
-      {!!$list->appends(request()->except('page'))->links('csm::pagination.index')!!}
+      {!!$list->appends(request()->except('page'))->links('Admin.pagination.index')!!}
    @endif       
   </div>  
 </div>

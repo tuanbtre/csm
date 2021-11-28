@@ -16,7 +16,7 @@ class CheckRight
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = \Auth::user();
+        $user = \Auth::guard('admin')->user();
 		if(!$user)
 			return redirect()->route('admin.login');
 		elseif($user->isadmin || $user->hasAccess(\Route::currentRouteName()))
