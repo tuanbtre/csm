@@ -246,6 +246,6 @@
       else
          $("#updated_at").attr('disabled', true);
    })
-   $("#updated_at").datetimepicker({format:'d/m/Y H:i'});
+   $("#updated_at").datetimepicker({dateFormat:'d/m/yy', timeFormat:'H:mm'});
   </script>
 @endsection
