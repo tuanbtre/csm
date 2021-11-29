@@ -10,7 +10,7 @@ class Functions extends Model
    use HasFactory;
    protected $table = 'tbl_function';
    protected $fillable = [
-      'id', 'url', 'route_name', 'controlleract', 'method', 'icon', 'title_vn', 'title_en', 'description', 'function_tab', 'linkpath', 'can_grant', 'isshow', 'parent_id' 
+      'id', 'url', 'route_name', 'controlleract', 'method', 'icon', 'title_vn', 'title_en', 'description', 'function_tab', 'can_grant', 'isshow', 'parent_id' 
    ];
     
    public function users()
@@ -27,7 +27,7 @@ class Functions extends Model
    }
    public function hasAccess(string $permissions) : bool
    {
-      return ($this->linkpath==$permissions)? true : false;
+      return ($this->route_name==$permissions)? true : false;
    }    
    public $timestamps = false;
 }
