@@ -12,7 +12,7 @@ return [
    'address' => 'Address(*)',
    'object' => 'Subject',
    'content' => 'Content',
-   'locale' => 'vi_VN', //ko đc dịch dòng này   
-   'language' => 'vi', //ko đc dịch dòng này   
+   'locale' => 'en_US', //ko đc dịch dòng này   
+   'language' => 'en', //ko đc dịch dòng này   
    'swapflag' => 'vn.png', //ko đc dịch dòng này   
 ];

@@ -28,7 +28,7 @@ class MetaHeaderController extends Controller
                 $request->file('image')->storeAs('', $file_name);
             }else
                 $file_name = '';    
-            DB::table('meta_header')->upsert(['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name], ['language_id']);
+            DB::table('meta_header')->upsert(['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name, 'language_id'=>$current_language], ['language_id']);
             return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
         }
     }
