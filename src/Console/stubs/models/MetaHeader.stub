@@ -11,6 +11,6 @@ class MetaHeader extends Model
    protected $table = 'meta_header';
     
    protected $fillable = [
-      'title', 'keyword', 'meta_description' 
+      'title', 'keyword', 'meta_description', 'image', 'language_id' 
    ];
 }

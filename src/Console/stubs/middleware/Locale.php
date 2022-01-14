@@ -30,8 +30,8 @@ class Locale
          if($staticpage)
             $language = DB::table('tbl_language')->find($staticpage->language_id)->url_name;
          else{ 
-            $route = DB::table('route_language')->where('route_name', $request->pagecode)->first();
-            $language = $route? $route->language->url_name : null;
+            $route = DB::table('route_language')->join('tbl_language', 'route_language.language_id', '=', 'tbl_language.id')->where('route_name', $request->pagecode)->select('tbl_language.url_name')->first();
+            $language = $route? $route->url_name : null;
          }              
       }else{
          $route = DB::table('route_language')->join('tbl_language', 'route_language.language_id', '=', 'tbl_language.id')->where('route_name', $currentRouteName)->select('tbl_language.url_name')->first();

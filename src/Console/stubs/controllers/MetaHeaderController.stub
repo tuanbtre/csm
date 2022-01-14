@@ -26,9 +26,11 @@ class MetaHeaderController extends Controller
             if($request->hasfile('image')){
                 $file_name = 'logo_'.Language::find($current_language)->url_name.'.'.$request->file('image')->extension();
                 $request->file('image')->storeAs('', $file_name);
-            }else
-                $file_name = '';    
-            DB::table('meta_header')->upsert(['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name, 'language_id'=>$current_language], ['language_id']);
+            }else{
+                $record = MetaHeader::where('language_id', $current_language)->first();
+                $file_name = $record? $record->image : '';
+            }
+            MetaHeader::updateOrCreate(['language_id'=>$current_language],['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name]);
             return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
         }
     }

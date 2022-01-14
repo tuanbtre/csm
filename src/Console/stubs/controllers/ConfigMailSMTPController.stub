@@ -33,7 +33,7 @@ public function __construct()
         }
     }
     //Kiểm tra dữ liệu 
-    protected function validateMetaheader(Request $request)
+    protected function validateform(Request $request)
     {
         $this->validate($request, [
             'mail_host' => 'required',
