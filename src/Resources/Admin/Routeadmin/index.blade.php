@@ -56,7 +56,7 @@
                      <td>{!!$item->controlleract!!}</td>
                      <td>{!!$item->method!!}</td>
                      <td>{!!$item->url!!}</td>
-                     <td id="row_{{$item['id']}}" data-title_vn="{{$item['title_vn']}}" data-title_en="{{$item['title_en']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['ccontrolleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}" data-description="{!!$item['description']!!}" data-function_tab="{!!$item['function_tab']!!}" data-can_grant="{!!$item['can_grant']!!}" data-isshow="{!!$item['isshow']!!}" data-icon="{!!$item['icon']!!}">
+                     <td id="row_{{$item['id']}}" data-title_vn="{{$item['title_vn']}}" data-title_en="{{$item['title_en']}}" data-parent_id="{!!$item['parent_id']!!}" data-route_name="{!!$item['route_name']!!}" data-controlleract="{{$item['controlleract']}}" data-method="{!!$item['method']!!}" data-url="{{$item['url']}}" data-description="{!!$item['description']!!}" data-function_tab="{!!$item['function_tab']!!}" data-can_grant="{!!$item['can_grant']!!}" data-isshow="{!!$item['isshow']!!}" data-icon="{!!$item['icon']!!}">
                        <i class="fa fa-pencil" onclick="Set({{$item['id']}})"></i>
                        <i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i>
                      </td>                  

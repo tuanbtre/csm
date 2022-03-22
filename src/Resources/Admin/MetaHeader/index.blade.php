@@ -57,7 +57,7 @@
                                  <label for="title" class="control-label">Tiêu đề</label>
                               </td>
                               <td>
-                                 <input type="Text" value="{!! $record['title'] !!}" id="title" name="title" class="form-control">
+                                 <input type="Text" value="{{ $record['title'] }}" id="title" name="title" class="form-control">
                               </td>
                            </tr>                        
                            <tr>
@@ -65,7 +65,7 @@
                                  <label for="keyword" class="control-label">KeyWord</label>
                               </td>
                               <td>
-                                 <textarea id="keyword" name="keyword" noneEditor class="form-control" rows="5">{!! $record['keyword'] !!}</textarea>
+                                 <textarea id="keyword" name="keyword" noneEditor class="form-control" rows="5">{{ $record['keyword'] }}</textarea>
                               </td>
                            </tr>
                            <tr>
@@ -73,7 +73,7 @@
                                  <label for="metadescription" class="control-label">Metadescription</label>
                               </td>
                               <td>
-                                 <textarea id="meta_description" name="meta_description" noneEditor class="form-control" rows="5">{!! $record['meta_description'] !!}</textarea>
+                                 <textarea id="meta_description" name="meta_description" noneEditor class="form-control" rows="5">{{ $record['meta_description'] }}</textarea>
                               </td>
                            </tr>
                            <tr>
