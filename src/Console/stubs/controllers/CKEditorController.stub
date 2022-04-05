@@ -35,7 +35,7 @@ class CKEditorController extends Controller
          //Upload File
          $request->file('upload')->storeAs('uploads', $filenametostore, 'public'); 
          $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-         $url = asset('storage/uploads/'.$filenametostore); 
+         $url = '/storage/uploads/'.$filenametostore; 
          $msg = 'File đã upload thành công'; 
          $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";             
          // Render HTML output 
