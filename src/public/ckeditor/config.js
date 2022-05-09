@@ -25,7 +25,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors' },
 		{ name: 'about' }
 	];
-	config.extraPlugins = 'justify,colorbutton,font';
+	config.extraPlugins = 'justify,colorbutton,font,youtube';
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	config.language = 'vi';
@@ -38,4 +38,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.ProcessHTMLEntities = false;
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.youtube_responsive = true;
 };

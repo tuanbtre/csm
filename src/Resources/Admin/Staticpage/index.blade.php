@@ -61,7 +61,7 @@
                      </td>
                      <td>{!!$item->priority!!}</td>
                      <td><input type="checkbox" name="isactive" {!!$item->isactive==1? 'checked' : ''!!} disabled></td>
-                     <td id="row_{{$item['id']}}" data-pagecode="{!! $item['pagecode'] !!}" data-title="{!! $item['title'] !!}" data-keyword="{{$item['keyword']}}" data-meta-description="{{$item['meta_description']}}" data-priority="{!! $item['priority'] !!}" data-image="{!! $item['image'] !!}" data-isactive="{!! $item['isactive'] !!}" data-brief="{{$item['brief']}}" data-content="{{$item['content'])}}">
+                     <td id="row_{{$item['id']}}" data-pagecode="{!! $item['pagecode'] !!}" data-title="{!! $item['title'] !!}" data-keyword="{{$item['keyword']}}" data-meta-description="{{$item['meta_description']}}" data-priority="{!! $item['priority'] !!}" data-image="{!! $item['image'] !!}" data-isactive="{!! $item['isactive'] !!}" data-brief="{{$item['brief']}}" data-content="{{$item['content']}}">
                        <i class="fa fa-pencil" onclick="Set({{$item['id']}})"></i>
                        <i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i>
                      </td>                  
