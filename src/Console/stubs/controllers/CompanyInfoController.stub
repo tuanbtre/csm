@@ -57,13 +57,13 @@ class CompanyInfoController extends Controller
    {
       $this->validate($request, [
          'code' => 'required|unique:tbl_companyinfo,code,'.$request->Id.',id,language_id,'.$request->l,
-         'image' => 'image|max:1024'
+         'image' => 'image|max:2048'
       ],
       [
          'code.required'=>'Vui lòng nhập vào mã code',
          'code.unique'=>'Mã code đã tồn tại',
          'image.image'=>'Ảnh không hợp lệ',
-         'image.max'=>'Kích thước ảnh vượt quá giới hạn 1M'
+         'image.max'=>'Kích thước ảnh vượt quá giới hạn 2M'
       ]);
    }
 }

@@ -71,12 +71,12 @@ class AboutusController extends Controller
    {
       $this->validate($request, [
          'title' => 'required',
-         'image' => 'image|max:1024'
+         'image' => 'image|max:2048'
       ],
       [
          'title.required'=>'Vui lòng nhập vào tiêu đề',
          'image.image'=>'Ảnh không hợp lệ',
-         'image.max'=>'Kích thước ảnh vượt quá giới hạn 1M'
+         'image.max'=>'Kích thước ảnh vượt quá giới hạn 2M'
       ]);
    }
 }

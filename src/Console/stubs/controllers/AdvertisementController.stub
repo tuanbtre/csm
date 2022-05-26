@@ -62,14 +62,14 @@ class AdvertisementController extends Controller
       $this->validate($request, [
          'title' => 'required|unique:advertisement,title,'.$request->Id.',id,language_id,'.$request->l,
          'group' => 'required',
-         'image' => 'image|max:1024'
+         'image' => 'image|max:2048'
         ],
         [
          'title.required'=>'Vui lòng nhập vào tiêu đề',
          'title.unique'=>'Tiêu đề đã tồn tại',
          'group.required' => 'Nhóm banner không được rỗng',
          'image.image'=>'Ảnh không hợp lệ',
-         'image.max'=>'Kích thước ảnh vượt quá giới hạn 1MB'
+         'image.max'=>'Kích thước ảnh vượt quá giới hạn 2MB'
       ]);
    }
 }

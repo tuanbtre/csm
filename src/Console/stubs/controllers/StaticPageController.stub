@@ -65,14 +65,14 @@ class StaticPageController extends Controller
       $this->validate($request, [
          'title' => 'required',
          'pagecode' => 'required|unique:tbl_staticpage,pagecode,'.$request->Id.',id,language_id,'.$request->l,
-         'image' => 'image|max:1024'
+         'image' => 'image|max:2048'
       ],
       [
          'title.required'=>'Vui lòng nhập vào tiêu đề',
          'pagecode.required' => 'Mã trang không được rỗng',
          'pagecode.unique' => 'Mã trang đã tồn tại',
          'image.image'=>'Ảnh không hợp lệ',
-         'image.max'=>'Kích thước ảnh vượt quá giới hạn 1M'            
+         'image.max'=>'Kích thước ảnh vượt quá giới hạn 2M'            
       ]);
    }
 }
