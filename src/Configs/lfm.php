@@ -53,6 +53,7 @@ return [
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
+				'image/webp',
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
@@ -67,6 +68,7 @@ return [
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
+				'image/webp',
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
@@ -100,9 +102,9 @@ return [
 
     'alphanumeric_directory'   => false,
 
-    'should_validate_size'     => false,
+    'should_validate_size'     => true,
 
-    'should_validate_mime'     => false,
+    'should_validate_mime'     => true,
 
     // behavior on files with identical name
     // setting it to true cause old file replace with new one
@@ -124,6 +126,7 @@ return [
     'raster_mimetypes'         => [
         'image/jpeg',
         'image/pjpeg',
+		'image/webp',
         'image/png',
     ],
 
@@ -147,6 +150,7 @@ return [
         'gif'  => 'GIF Image',
         'jpg'  => 'JPEG Image',
         'jpeg' => 'JPEG Image',
+		'webp' => 'WEBP Image',
         'png'  => 'PNG Image',
         'ppt'  => 'Microsoft PowerPoint',
         'pptx' => 'Microsoft PowerPoint',

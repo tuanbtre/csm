@@ -13,11 +13,11 @@ class CKEditorController extends Controller
    }
    public function upload(Request $request){
    	$validator = \Validator::make($request->all(), [
-         'upload' => 'nullable|mimes:jpeg,bmp,png|max:2048'
+         'upload' => 'nullable|mimes:jpeg,bmp,png,webp|max:2048'
       ]);
       if ($validator->fails()) {
          $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-         $msg = 'File upload phải có địng dạng jpg,bmp,png và nhỏ hơn 2Mb'; 
+         $msg = 'File upload phải có địng dạng jpg,bmp,png,webp và nhỏ hơn 2Mb'; 
          $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '', '$msg')</script>";             
          // Render HTML output 
          @header('Content-type: text/html; charset=utf-8'); 
