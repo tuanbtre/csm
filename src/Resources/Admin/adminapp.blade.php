@@ -158,11 +158,11 @@
             {   
                CKEDITOR.replace(allTextAreas[i].name, {
                   filebrowserUploadMethod: 'form',
-                  uploadUrl:"{{route('ckeditorpasteanddrop', ['_token' => csrf_token(), 'type'=>'Images'])}}",
-                  filebrowserImageBrowseUrl: '{{url("/laravel-filemanager?type=Images")}}',
-                  filebrowserImageUploadUrl: "{{route('ckeditorupload', ['_token' => csrf_token(), 'type'=>'Images'])}}",
-                  filebrowserBrowseUrl: "{{url('/laravel-filemanager?type=Files')}}",
-                  filebrowserUploadUrl: "{{url('/laravel-filemanager/upload?type=Files&_token='.csrf_token())}}"
+                  uploadUrl:"{!!route('ckeditorpasteanddrop', ['_token' => csrf_token(), 'type'=>'Images'])!!}",
+                  filebrowserImageBrowseUrl: '{!!url("/laravel-filemanager?type=Images")!!}',
+                  filebrowserImageUploadUrl: "{!!route('ckeditorupload', ['_token' => csrf_token(), 'type'=>'Images'])!!}",
+                  filebrowserBrowseUrl: "{!!url('/laravel-filemanager?type=Files')!!}",
+                  filebrowserUploadUrl: "{!!url('/laravel-filemanager/upload?type=Files&_token='.csrf_token())!!}"
                });
                CKEDITOR.dtd.a.div = 1;
                CKEDITOR.dtd.a.p = 1;

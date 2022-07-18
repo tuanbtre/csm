@@ -33,6 +33,6 @@ Route::group(['namespace'=> 'App\\Http\\Controllers', 'middleware'=>['locale']],
 		}catch(\Exception $e){	
 			continue;
 		}	
-	}
-	Route::fallback(function(){return Redirect::route(__('route.home'))->with(['Flass_Message'=>__('label.errorlink')]);});
+	}	
 });
+Route::fallback(function(){return Redirect::route(__('route.home'))->with(['Flass_Message'=>__('label.errorlink')]);});

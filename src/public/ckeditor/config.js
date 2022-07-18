@@ -37,6 +37,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.entities_latin = false;
 	config.ProcessHTMLEntities = false;
 	// Simplify the dialog windows.
-	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.removeDialogTabs = 'image:advanced;link:advanced;image:Link';
 	config.youtube_responsive = true;
 };

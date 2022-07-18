@@ -151,7 +151,7 @@
                </div> 
                <div class="col-md-12">
                   <label class="cd-label" for="image">Upload ảnh</label>
-                  <input type="file" name="image" multiple class="form-control" style = "height: auto">
+                  <input type="file" name="image" class="form-control" style = "height: auto">
                </div>
                <div class="col-md-12">
                   <label class="cd-label" for="priority">Thứ tự</label>

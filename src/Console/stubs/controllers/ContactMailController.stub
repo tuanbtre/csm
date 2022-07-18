@@ -14,7 +14,7 @@ class ContactMailController extends Controller
    {
       $this->middleware('auth:admin');
    }
-   public function index(int $id = 0, Request $request)
+   public function index(Request $request)
    {
     	$language = Language::all();
       $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default =2
