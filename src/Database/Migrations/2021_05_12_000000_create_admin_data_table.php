@@ -20,7 +20,7 @@ class CreateAdminDataTable extends Migration
             $table->string('username');
             $table->string('image', 255)->nullable();
             $table->tinyInteger('isadmin')->default(0);
-            $table->string('email')->unique();
+            $table->string('email', 190)->unique();
 			$table->string('phone', 20)->nullable();
 			$table->string('address', 255)->nullable();
 			$table->tinyInteger('isactive')->default(1);
