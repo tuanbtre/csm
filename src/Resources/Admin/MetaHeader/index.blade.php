@@ -57,7 +57,7 @@
                                  <label for="title" class="control-label">Tiêu đề</label>
                               </td>
                               <td>
-                                 <input type="Text" value="{{ $record['title'] }}" id="title" name="title" class="form-control">
+                                 <input type="Text" value="{{$record? $record->title : ''}}" id="title" name="title" class="form-control">
                               </td>
                            </tr>                        
                            <tr>
@@ -65,7 +65,7 @@
                                  <label for="keyword" class="control-label">KeyWord</label>
                               </td>
                               <td>
-                                 <textarea id="keyword" name="keyword" noneEditor class="form-control" rows="5">{{ $record['keyword'] }}</textarea>
+                                 <textarea id="keyword" name="keyword" noneEditor class="form-control" rows="5">{{$record? $record->keyword : ''}}</textarea>
                               </td>
                            </tr>
                            <tr>
@@ -73,7 +73,7 @@
                                  <label for="metadescription" class="control-label">Metadescription</label>
                               </td>
                               <td>
-                                 <textarea id="meta_description" name="meta_description" noneEditor class="form-control" rows="5">{{ $record['meta_description'] }}</textarea>
+                                 <textarea id="meta_description" name="meta_description" noneEditor class="form-control" rows="5">{{$record? $record->meta_description : ''}}</textarea>
                               </td>
                            </tr>
                            <tr>
@@ -81,9 +81,9 @@
                                  <label for="image" class="control-label">Ảnh đại diện</label>
                               </td>
                               <td>
-                                 <input type="Text" readonly="readonly" id="oldimage" name="oldimage" value="{!!$record['image']!!}" class="form-control" style = "float:left;width:40%">
+                                 <input type="Text" readonly="readonly" id="oldimage" name="oldimage" value="{!!$record? $record->image : ''!!}" class="form-control" style = "float:left;width:40%">
                                      &nbsp; 
-                                 <input type="button" id="btnView" name="btnView" value="Xem" style="margin-left:5px" onclick="View('{!!$record['image']!!}')"/>
+                                 <input type="button" id="btnView" name="btnView" value="Xem" style="margin-left:5px" onclick="View('{!!$record? $record->image : ''!!}')"/>
                               </td>
                            </tr>
                            <tr>
@@ -125,7 +125,5 @@
       var newWin = window.open("{{url('admin/quanly-hethong')}}?fn=" + path, "PREVIEW", "width=150, height=200");
       newWin.focus();
    }
-   $("#delivery_book").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
-   $("#delivery_date").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
   </script>
 @endsection
