@@ -663,7 +663,7 @@ fieldset, .scrollable{ float: left; width: 100%;}
 	cursor: pointer;
 }
 /*danhsachkhachhang*/
-.button-themmoi{ float:left; width:100%; background:#5bb75b; color:#fff; text-align:center; border:1px solid #499019; padding:7px 0; font-size:14px}
+.button-themmoi{ float:left; width:100%; background:#5bb75b; color:#fff; text-align:center; border:1px solid #499019; padding:8px 0; font-size:14px; border-radius:0}
 .button-themmoi:hover{ text-decoration:none; background:#499019; color:#fff}
 .b-normal{ background:#5bb75b; color:#fff; text-align:center}
 .b-normal:hover{ text-decoration:none; background:#499019; color:#fff}

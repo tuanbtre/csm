@@ -50,7 +50,7 @@ CSM là ứng dụng web được phát triển trên Laravel framework dành ch
 	link public: 127.0.0.1
 ## Sử dụng
 
-	tham khảo (https://laravel.com)	
+	Tham khảo (https://laravel.com)	
 	
 ## Security Vulnerabilities
 
