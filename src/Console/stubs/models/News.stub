@@ -22,5 +22,5 @@ class News extends Model
    {
       return $this->morphToMany('DummyNamespace\Tags', 'taggable');
    }
-   public $timestamps = true;
+   public $timestamps = false;
 }

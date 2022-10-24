@@ -186,7 +186,7 @@ class CreateAdminDataTable extends Migration
 			$table->tinyInteger('isdefault')->default(0);
 			$table->integer('priority')->default(1);
 			$table->tinyInteger('isactive')->default(0);
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
 		Schema::create('contact_mail', function (Blueprint $table) {
             $table->id();
