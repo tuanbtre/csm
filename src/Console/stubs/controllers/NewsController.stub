@@ -28,9 +28,9 @@ class NewsController extends Controller
       if($request->isMethod('get')){
          $listcat = NewsType::where('language_id', $current_language)->orderBy('priority', 'desc')->get();
          if($strsearch)
-            $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->where('title', 'like', '%'.$strsearch.'%')->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated'))->orderBy('priority', 'desc')->paginate(15);
+            $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->where('title', 'like', '%'.$strsearch.'%')->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated, DATE_FORMAT(activedate,\'%d/%m/%Y\') as actdate'))->orderBy('priority', 'desc')->paginate(15);
          else
-            $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated'))->orderBy('priority', 'desc')->paginate(15);
+            $list = News::whereHas('newscat',function($query) use ($current_language){$query->where('language_id', $current_language);})->select(DB::raw('*, DATE_FORMAT(updated_at,\'%d/%m/%Y %H:%i\') as updated, DATE_FORMAT(activedate,\'%d/%m/%Y\') as actdate'))->orderBy('priority', 'desc')->paginate(15);
          return view('Admin.News.detail', compact('list', 'listcat', 'current_language', 'language'));
       }elseif($request->deleteMode==1){
          $record = News::find($request->Id);
@@ -61,6 +61,7 @@ class NewsController extends Controller
              'keyword'=>$request->keyword,
              'meta_description'=>$request->meta_description,
              'priority'=>$priority,
+			 'activedate' => $request->activedate? Carbon::createFromFormat('d/m/Y', $request->activedate)->format('Y-m-d') : null,
              'isactive'=>($request->isactive==1)? 1 : 0,
              'ishot' => ($request->ishot==1)? 1 : 0,
              'isdefault' => ($request->isdefault==1)? 1 : 0            

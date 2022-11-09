@@ -65,7 +65,7 @@
                      </td>
                      <td>{!!$item->priority!!}</td>
                      <td><input type="checkbox" name="isactive" {!!$item->isactive==1? 'checked' : ''!!} disabled></td>
-                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-isactive="{{$item['isactive']}}" data-image="{!! $item['image'] !!}" data-re_name="{{$item['re_name']}}" data-brief="{{$item['brief']}}" data-content="{{$item['content']}}" data-keyword="{{$item['keyword']}}" data-meta-description="{{$item['meta_description']}}" data-cat_id = "{!!$item['cat_id']!!}" data-priority="{{$item['priority']}}" data-isdefault="{{$item['isdefault']}}" data-updated_at="{!!$item->updated!!}" data-ishot="{{$item['ishot']}}" data-tag="{!!$item['tag']!!}">
+                     <td id="row_{{$item['id']}}" data-title="{{$item['title']}}" data-isactive="{{$item['isactive']}}" data-image="{!! $item['image'] !!}" data-re_name="{{$item['re_name']}}" data-brief="{{$item['brief']}}" data-content="{{$item['content']}}" data-keyword="{{$item['keyword']}}" data-meta-description="{{$item['meta_description']}}" data-cat_id = "{!!$item['cat_id']!!}" data-priority="{{$item['priority']}}" data-isdefault="{{$item['isdefault']}}" data-updated_at="{!!$item->updated!!}" data-ishot="{{$item['ishot']}}" data-tag="{!!$item['tag']!!}" data-activedate="{{$item['actdate']}}">
                        <i class="fa fa-eye" title="Xem" onclick="review('{{$item['re_name']}}')"></i>
                        <i class="fa fa-pencil" title="Chỉnh sửa" onclick="Set({{$item['id']}})"></i>
                        <i class="fa fa-times" title="Xóa" onclick="SetDeleteMode({{$item['id']}})"></i>
@@ -106,7 +106,7 @@
                   <label class="cd-label" for="re_name">Rewrite url</label>
                   <input id="re_name" name="re_name" type="text">
                </div>
-               <div class="col-md-6">
+               <div class="col-md-4">
                   <label class="cd-label" for="re_name">Nhóm tin</label>
                   <p class="cd-select">
                   <select required class="no-bg" id="cat_id" name="cat_id">
@@ -116,12 +116,16 @@
                      @endforeach
                   </select></p>
                </div>
-               <div class="col-md-6">
+               <div class="col-md-4">
                   <div class="row">
                      <span><input class="tran-check" type="checkbox" id="isedit" name="isedit" value="1">
                      <label for="isedit">Sửa ngày cập nhật</label></span>
                      <input id="updated_at" name="updated_at" type="text" disabled="">
                   </div>   
+               </div>
+			   <div class="col-md-4">
+                     <label class="cd-label" for="activedate">Ngày kích hoạt</label>
+                     <input id="activedate" name="activedate" type="text" placeholder="Chọn ngày hệ thống tự động kích hoạt">
                </div>
                <div class="col-md-12">
                   <label class="cd-label" for="brief">Mô tả</label>
@@ -203,6 +207,7 @@
       SetRecordTextBox('meta_description', id_row, 'data-meta-description', '');
       SetRecordComboBox('cat_id', id_row, 'data-cat_id', '');
       SetRecordComboBox('updated_at', id_row, 'data-updated_at', '');
+	  SetRecordTextBox('activedate', id_row, 'data-activedate', '');
       $('#myModal').modal('show');
    }
    function SetNew() {
@@ -247,5 +252,6 @@
          $("#updated_at").attr('disabled', true);
    })
    $("#updated_at").datetimepicker({dateFormat:'d/m/yy', timeFormat:'H:mm'});
+   $("#activedate").datetimepicker({format:'d/m/Y'});
   </script>
 @endsection
