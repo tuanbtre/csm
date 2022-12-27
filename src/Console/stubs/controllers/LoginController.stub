@@ -76,12 +76,8 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         return $this->guard('admin')->attempt(
-            $this->credentials($request), $request->filled('remember')
+            ['username'=>request()->username, 'password'=>request()->password, 'isactive'=>1], $request->filled('remember')
         );
-    }
-    protected function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'password');
     }
     protected function sendLoginResponse(Request $request)
     {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 if(Schema::hasTable('route_language'))
-	$rl = DB::table('route_language')->whereNotNull('controlleract')->orderBy('language_id')->get();
+	$rl = DB::table('route_language')->whereNotNull('controlleract')->orderBy('language_id')->orderBy('id')->get();
 else
 	$rl = [];
 Route::group(['namespace'=> 'App\\Http\\Controllers', 'middleware'=>['locale']], function () use($rl) {

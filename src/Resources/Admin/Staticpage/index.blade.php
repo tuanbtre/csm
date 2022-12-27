@@ -99,7 +99,7 @@
                </div>
                <div class="col-md-6">
                   <label for="pagecode" class="cd-label">Mã trang</label>
-                  <input type="text" id="pagecode" name="pagecode">
+                  <input type="text" id="pagecode" name="pagecode" required>
                </div>
                <div class="col-md-12">
                   <label class="cd-label" for="brief">Mô tả</label>
@@ -167,7 +167,7 @@
       SetRecordTextBox('priority', id_row, 'data-priority', '');
       SetRecordCK('brief', id_row, 'data-brief', '');
       SetRecordCK('content', id_row, 'data-content', '');
-      SetRecordCheckBox('isdefault', id_row, 'data-isdefault', '');
+      SetRecordCheckBox('isactive', id_row, 'data-isactive', '');
       $('#myModal').modal('show');
    }
    function SetNew() {
