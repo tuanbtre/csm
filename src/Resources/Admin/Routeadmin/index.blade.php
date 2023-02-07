@@ -49,9 +49,9 @@
                <tbody>
                   @foreach($list as $key=>$item)
                   <tr>                              
-                     <td>{!!$key+1!!}</td>
+                     <td>{!!$loop->iteration+(($list->currentPage()-1)*15)!!}</td>
                      <td>{!!$item->title_vn!!}</td>
-                     <td>{!!$item->parent_id!!}</td>
+                     <td>{!!$item->parent? $item->parent->title_vn : 'root'!!}</td>
                      <td>{!!$item->route_name!!}</td>
                      <td>{!!$item->controlleract!!}</td>
                      <td>{!!$item->method!!}</td>
