@@ -252,6 +252,6 @@
          $("#updated_at").attr('disabled', true);
    })
    $("#updated_at").datetimepicker({dateFormat:'d/m/yy', timeFormat:'H:mm'});
-   $("#activedate").datetimepicker({format:'d/m/Y'});
+   $("#activedate").datepicker({dateFormat:'d/m/yy'});
   </script>
 @endsection
