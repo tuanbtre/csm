@@ -137,7 +137,7 @@
                            </tr>
                            @foreach ($list as $item)
                               <tr>
-                                 <td class="cell_normal" style="cursor:pointer;" id="row_{!! $item['id'] !!}" onclick="active_item(this);Set('{!! $item['id'] !!}')" data-title="{!! $item['title'] !!}" data-brief="{!! str_replace('"','&quot;', $item['brief']) !!}" data-url="{!! $item['url'] !!}" data-priority="{!! $item['priority'] !!}" data-image="{!! $item['image'] !!}" data-isactive="{!! $item['isactive'] !!}" data-popup="{!! $item['popup'] !!}">{!! $item['title'] !!} 
+                                 <td class="cell_normal" style="cursor:pointer;" id="row_{!! $item['id'] !!}" onclick="active_item(this);Set('{!! $item['id'] !!}')" data-title="{!! $item['title'] !!}" data-brief="{{$item->brief}}" data-url="{!! $item['url'] !!}" data-priority="{!! $item['priority'] !!}" data-image="{!! $item['image'] !!}" data-isactive="{!! $item['isactive'] !!}" data-popup="{!! $item['popup'] !!}">{!! $item['title'] !!} 
                                  </td>
                               </tr>
                            @endforeach
