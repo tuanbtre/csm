@@ -37,12 +37,9 @@ CSM là ứng dụng web được phát triển trên Laravel framework dành ch
 
 	vào thư mục chứa project
 	cd project
-	chạy câu lệnh sau
 	composer require tuanbtre/csm
 	mở file .env thay đổi các thông số cấu hình kết nối database
-	tiếp tục chạy câu lệnh:
 	php artisan install:csm
-	tiếp tục chạy câu lệnh
 	php artisan storage:link
 	start project
 	php artisan serve
