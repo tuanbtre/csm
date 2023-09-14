@@ -4,6 +4,7 @@ namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class News extends Model
 {
@@ -21,6 +22,22 @@ class News extends Model
    public function tags()
    {
       return $this->morphToMany('DummyNamespace\Tags', 'taggable');
+   }
+   public function getActivedateAttribute($value)
+   {
+      try {
+         return Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y');  
+      } catch (\Exception $e) {
+         return null;
+      }      
+   }
+   public function setActivedateAttribute($value)
+   {
+      try {
+         $this->attributes['activedate'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+      } catch (\Exception $e) {
+         $this->attributes['activedate'] = null;
+      }   
    }
    public $timestamps = false;
 }

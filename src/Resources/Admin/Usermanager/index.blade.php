@@ -101,11 +101,11 @@
               </div> 
               <div class="col-md-6">
                 <label class="cd-label" for="phone">Điện thoại</label>
-                <input type="text" id="phone" name="phone" maxlength="50">
+                <input type="text" pattern="[0-9. -]+" id="phone" name="phone" maxlength="50">
               </div>
               <div class="col-md-6">
                 <label class="cd-label" for="email">Email</label>
-                <input type="text" id="email" name="email" required>
+                <input type="email" id="email" name="email" required>
               </div>
               <div class="col-md-6" id="trPassword">
                 <label class="cd-label" for="password">Mật khẩu</label>

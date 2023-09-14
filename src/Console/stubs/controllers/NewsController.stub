@@ -61,7 +61,7 @@ class NewsController extends Controller
              'keyword'=>$request->keyword,
              'meta_description'=>$request->meta_description,
              'priority'=>$priority,
-			 'activedate' => $request->activedate? Carbon::createFromFormat('d/m/Y', $request->activedate)->format('Y-m-d') : null,
+			 'activedate' => $request->activedate,
              'isactive'=>($request->isactive==1)? 1 : 0,
              'ishot' => ($request->ishot==1)? 1 : 0,
              'isdefault' => ($request->isdefault==1)? 1 : 0            
