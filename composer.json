@@ -7,7 +7,6 @@
         }],
     "require": {
 		"php": "^7.3|^8.0",
-		"laravel/ui": "^3.3",
 		"spatie/laravel-analytics": "^3.11|^4.1.0|^5.0.3",
         "unisharp/laravel-filemanager": "^2.2|^2.5.1"
 	},
