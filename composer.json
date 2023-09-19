@@ -6,9 +6,10 @@
             "email": "tuancsharp@gmail.com"
         }],
     "require": {
-		"php": "^7.3|^8.0",
-		"spatie/laravel-analytics": "^3.11|^4.1.0|^5.0.3",
-        "unisharp/laravel-filemanager": "^2.2|^2.5.1"
+		"php": "^8.0",
+		"laravel/ui": "^4.2",
+		"spatie/laravel-analytics": "^5.0",
+        "unisharp/laravel-filemanager": "^2.5"
 	},
 	"extra": {
         "laravel": {
