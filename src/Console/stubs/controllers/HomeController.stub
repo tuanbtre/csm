@@ -5,7 +5,7 @@ namespace DummyNamespace;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
-use Analytics;
+use Spatie\Analytics\Facades\Analytics;
 use Spatie\Analytics\Period;
 class HomeController extends Controller
 {
@@ -33,9 +33,10 @@ class HomeController extends Controller
         $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
         $toprefer = Analytics::fetchTopReferrers(Period::days(7));
         $topbrow = Analytics::fetchTopBrowsers(Period::days(7));
-        $topbrowpercent = $topbrow->map(function($item) use ($topbrow){return ['percent'=>round($item['sessions']*100/$topbrow->sum('sessions'), 2), 'browser'=>$item['browser']];});
+        $topbrowpercent = $topbrow->map(function($item) use ($topbrow){return ['percent'=>round($item['screenPageViews']*100/$topbrow->sum('screenPageViews'), 2), 'browser'=>$item['browser']];});
         //dd(Analytics::performQuery(Period::days(7), 'ga:users, ga:sessionsPerUser', ['metrics' => 'ga:pageviews, ga:users','dimensions' => 'ga:browser']));
-        $totalvisitor = $this->getallvisitor(Period::create($startDate, $endDate));    
+        //dd(ga:users);
+		$totalvisitor = Analytics::get(Period::create($startDate, $endDate), ['totalUsers'], ['year'])->sum('totalUsers');    
         }catch(\Exception $e){
             $data=collect();
             $toprefer = collect();  
@@ -44,18 +45,6 @@ class HomeController extends Controller
             $error = 'Không liên kết được google analytic';
         }
         return view('Admin.home', compact('data', 'toprefer', 'topbrowpercent', 'totalvisitor', 'error'));
-    }
-    protected function getallvisitor(Period $period): int
-    {
-        $response = Analytics::performQuery(
-            $period,
-            'ga:users',
-            [
-                'metrics'=> 'ga:users',
-                'dimensions' => 'ga:year'
-            ]
-        );
-        return $response->totalsForAllResults? $response->totalsForAllResults['ga:users'] : 0;
     }
     public function viewfile()
     {

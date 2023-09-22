@@ -58,8 +58,8 @@
                            @foreach($toprefer as $item)
                            <tr>
                               <td>{!!$loop->iteration!!}</td>
-                              <td>{!!$item['url']!!}</td>
-                              <td>{!!$item['pageViews']!!}</td>
+                              <td>{!!$item['pageReferrer']!!}</td>
+                              <td>{!!$item['screenPageViews']!!}</td>
                            </tr>
                            @endforeach                           
                         </tbody>
@@ -116,7 +116,7 @@
                labels: {!!$data->map(function($item){return $item['date']->format('d/m/Y');})!!},
                datasets: [{
                   type: 'line',
-                  data: {!!$data->map(function($item){return $item['visitors'];})!!},
+                  data: {!!$data->map(function($item){return $item['activeUsers'];})!!},
                   backgroundColor: 'transparent',
                   borderColor: '#007bff',
                   pointBorderColor: '#007bff',
@@ -125,7 +125,7 @@
                },
                {
                   type: 'line',
-                  data: {!!$data->map(function($item){return $item['pageViews'];})!!},
+                  data: {!!$data->map(function($item){return $item['screenPageViews'];})!!},
                   backgroundColor: 'tansparent',
                   borderColor: '#ced4da',
                   pointBorderColor: '#ced4da',
