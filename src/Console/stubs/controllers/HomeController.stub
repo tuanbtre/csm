@@ -30,7 +30,7 @@ class HomeController extends Controller
         $endDate = Carbon::now();
         $error = null;
         try{
-        $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+        $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7))->reverse()->values();
         $toprefer = Analytics::fetchTopReferrers(Period::days(7));
         $topbrow = Analytics::fetchTopBrowsers(Period::days(7));
         $topbrowpercent = $topbrow->map(function($item) use ($topbrow){return ['percent'=>round($item['screenPageViews']*100/$topbrow->sum('screenPageViews'), 2), 'browser'=>$item['browser']];});

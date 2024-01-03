@@ -21,7 +21,7 @@ CSM là ứng dụng web được phát triển trên Laravel framework dành ch
 
 ## Yêu cầu
 
-    PHP >= 7.3
+    PHP >= 8.1
     BCMath PHP Extension
     Ctype PHP Extension
     Fileinfo PHP Extension

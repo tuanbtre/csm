@@ -19,11 +19,12 @@ class AdvertisementController extends Controller
    {
       $language = Language::all();
       $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
-      $path  = "adbanner";
+      $f = $request->f?? null;
+	  $path  = "adbanner";
       $re_name  = Str::slug($request->title, '-');
       if($request->isMethod('get')){
-            $list = Advertisement::where('language_id', $current_language)->paginate(15);
-            return view('Admin.Advertisement.index', compact('list', 'current_language', 'language'));
+            $list = Advertisement::where(function($query) use ($f, $current_language){if($f)$query->where([['group', $f], ['language_id', $current_language]]);else $query->where('language_id', $current_language);})->paginate(15);
+			return view('Admin.Advertisement.index', compact('list', 'current_language', 'language', 'f'));
       }elseif($request->deleteMode==1){//Xóa
          $record = Advertisement::find($request->Id);
          $image = $record->image;

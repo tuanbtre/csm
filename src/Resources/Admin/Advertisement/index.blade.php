@@ -17,7 +17,12 @@
                @foreach($language as $item)
                   <option value="{!! $item['id'] !!}" {!! $item['id']==$current_language? "selected" : "" !!}>{!! $item['lang_name'] !!}</option>
                @endforeach
-            </select></p>               
+            </select></p>
+			<p style="text-align: right"><label>Lọc theo nhóm </label><select id="filterad" style="width:unset;margin-left: 10px;">
+               <option value="">Chọn nhóm</option>
+               <option value="1" {{$f==1? 'selected' : ''}}>Quảng cáo Widget sidebar</option>
+               <option value="2" {{$f==2? 'selected' : ''}}>Quảng cáo popup trang chủ</option>
+            </select></p>	
          </div>
       </div>      
    </div>
@@ -220,6 +225,9 @@
       var newWin = window.open("{{url('admin/quanly-hethong')}}?fn=" + path, "PREVIEW", "width=150, height=200");
       newWin.focus();
    }
+   $('select#filterad').on('change',function(){
+      document.location.href = '{{url('admin/advertisement')}}?f='+this.value+'&l='+'{!!$current_language!!}'
+   })
    $("#delivery_book").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
    $("#delivery_date").datepicker({dateFormat: "dd-mm-yy",minDate:"0"});
   </script>

@@ -35,4 +35,8 @@ Route::group(['namespace'=> 'App\\Http\\Controllers', 'middleware'=>['locale']],
 		}	
 	}	
 });
-Route::fallback(function(){return Redirect::route(__('route.home'))->with(['Flass_Message'=>__('label.errorlink')]);});
+Route::fallback(function(){
+	if(Request()->route()->getPrefix()=='admin')
+		return Redirect::route('admin.home')
+	else
+		return Redirect::route(__('route.home'));});
