@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "avid-airway-314308",
+  "private_key_id": "2403b495295b37b9d1656d81a6c63793b5a87cdb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCabIs+kGgMBhlH\n7qCA0jL8u7m1tlM7txgfvYBj3cwr0QWTWqIK+7W2wGrOdR4mLlo14uDhTcnZxr5T\nbD9jctT+dMtQ8WW3PtR8UQMYkpwNQne+DMUce/m3qoNG8jRa/eySTbpIVr1vi/e8\nd9crGYLIC74ogeYYt5JSzDd6kQknG3+UT/WzXu0MTLjBX168Z9lRptf9N6Hh1sre\nJJ9ZQ0ufMUrKPIIjP4CONT165l4Cda0AvCamGytgIFHHF0Lcov/AQJNuHz0A1Ftk\nASmjkxaHgiHHoUc2AZZoUJ6Q7xZ6VhkHnirOqGkq8kdwXnibq2nR0FHbtsF6QuSz\nmA9nVaZNAgMBAAECggEASyktlOQAYGnPgD1bDZhBjNVqDFGTrWruaPR5OyJHL8Rq\nrE/esu3UggChe59xby/8ZGHrBn4wErkzBbOYHrVTig4ar2jvEwOXtHJRyXICVknV\nskDQ545H+ucZQjy80tTogkUmt/LP/SzpBWhm5+lgyDE++sRO1BT1OSuAjT1ucQOl\nwJVMP9tJVyamnIBUKNyPkWKtwJULzr5bgTAu4qhufAZ1gLltPLPl42GjNw8tA2rf\n7e2RLH6znqpWrD0tvo1/IOjgavjT+VnhyLJqkptH54AKB+Fp/pYsGElBMaXgmXYz\nAjlAES952d4tqACDOYToe0aknFC8SXEJIML/uxhAWQKBgQDJ5b36LGTlClk0jKwk\nZmZcH7ku0Nk2DHvtOR32LrrdRboKUmnZ6KEb/kqeBzWi355OLlHLRZZtMsmxosCE\ns23dTRPXFEviqnT8lTL89mp6St5vSPYhkvtAvAw06CT7HziQpjMIhYtsYaxT2RgS\njuxdIgP3lHF1VIxpG9DG7foAAwKBgQDDzhozuqpHjPhuE/8QdwiINOE6ZOUF7SAZ\nuk/3Q6yudEOBtN/BVPtO6jlhka/U4J12igNAYOOCDfVszkH06eRNsD/Xjw6rnnm7\nuS7O8gkMs3uSttHpXVyCBMM0fZpu08gWr89vcKaiR2tKVHf8pDxw9PQk9vzvGOjQ\njaYugKU3bwKBgGZ06kXMxZ7d84sRYEJQnN1fU/CIF9Kv3yvxclz+NeIYgmK+k+z7\netbj4yXy7qsq5AE0zFllhQMBZQ16VEyDaduGQ+0/5YqvihKr/GYW/s30tJCw7Ab5\nufuN8nve2vV9UI1HalqGusxTfMpIP0kbsqNIoc7ATBuIvoCQlxB8sAPVAoGAeZvE\n3EHfxeaA2OUkchZrvySQidLmBuM6H6B+T8TBN+xPjPxIR+u+1UlVcAqqmN0UDu4y\njMZgJoMC3ZvQjQrC15lSXU+lPeOEGZouvyrFghTq97kB8B0i+kF4913XD2QLDkQM\n4lqls34F3blOeCOMwl7wTxDzEJB48CY5gwI1GpMCgYAOs2vhNRp2otHUQc6uDYEp\nP+HqKp2eR5BD9m0+cyLJWDV/YXqLa6hnPsh3MTt+M4ZjCZN0JFLtCeMrMer0Hrbh\njNYAh76YhSMpEmYHtOHCC0iIIBpDAEFYzyEJq3IosYkhdM0nSsMTjr/YSBzW4q2y\nSa0UXSy5/TPa09p0qPNenw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "analyticapi@avid-airway-314308.iam.gserviceaccount.com",
+  "client_id": "109783759483287805457",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/analyticapi%40avid-airway-314308.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
