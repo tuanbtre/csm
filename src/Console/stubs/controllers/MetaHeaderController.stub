@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\MetaHeader;
+use App\Models\RouteLanguage;
 use App\Models\Language;
 
 class MetaHeaderController extends Controller
@@ -18,34 +19,48 @@ class MetaHeaderController extends Controller
     {
         $language = Language::all();
         $current_language = $request->l?? config('admin.lang', 2); //kiểm tra ngôn ngữ nếu ko có lấy default APP_LANG_ADMIN trong file env
+        $path  = "metahead";
+        $lsrouter = RouteLanguage::where([['language_id', $current_language], ['parent_id', 0]])->get();
         if($request->isMethod('get')){
-            $record = MetaHeader::where('language_id', $current_language)->first();
-            return view('Admin.MetaHeader.index', compact('record', 'current_language', 'language'));
-        }else{
-            $this->validateMetaheader($request);
-            if($request->hasfile('image')){
-                $file_name = 'logo_'.Language::find($current_language)->url_name.'.'.$request->file('image')->extension();
-                $request->file('image')->storeAs('', $file_name);
-            }else{
-                $record = MetaHeader::where('language_id', $current_language)->first();
-                $file_name = $record? $record->image : '';
+            $list = MetaHeader::where('language_id', $current_language)->paginate(15);
+            return view('Admin.MetaHeader.index', compact('list', 'lsrouter', 'current_language', 'language'));
+        }elseif($request->deleteMode==1){
+            $record = MetaHeader::find($request->Id);
+            $image = $record->image;
+            if($image!==''){
+                try{
+                   Storage::delete($path.'/'.$image);    
+                }catch(\Exception $e){
+                   return redirect()->back()->with(['Flass_Message'=>'Có lỗi xảy ra khi xóa file ảnh']);
+                }                
             }
-            MetaHeader::updateOrCreate(['language_id'=>$current_language],['title'=>$request->title, 'keyword'=>$request->keyword, 'meta_description'=>$request->meta_description, 'image'=>$file_name]);
+            $record->delete();
+            return redirect()->back()->with(['Flass_Message'=>'Xóa dữ liệu thành công']);
+        }else{
+            $this->validateMetaheader($request); // validate database
+            $fileimage = FunctionUpload($request->isDelete, $path, 'image', $request->oldimage);
+            $record = MetaHeader::updateOrCreate(
+                ['id'=>$request->Id],
+                ['title'=>$request->title,
+                 'route_name'=>$request->route_name,
+                 'keyword'=>$request->keyword,
+                 'meta_description'=>$request->meta_description,
+                 'script'=>$request->script,
+                 'image'=>$fileimage,
+                 'language_id'=>$request->l,
+                 'isactive'=>($request->isactive==1)? 1 : 0
+            ]);             
             return redirect()->back()->with(['Flass_Message'=>'Cập nhật dữ liệu thành công']);
-        }
+        }            
     }
     //Kiểm tra dữ liệu 
     protected function validateMetaheader(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'keyword' => 'required',
-            'meta_description' => 'required'
+            'route_name' => 'unique:meta_header,route_name,'.$request->Id
         ],
         [
-            'title.required'=>'Vui lòng nhập vào tiêu đề',
-            'keyword.required'=>'Vui lòng nhập vào keyword',
-            'meta_description.required'=>'Vui lòng nhập vào meta-description'
+            'route_name.unique'=>'Trang vừa chọn đã tồn tại'
         ]);
     }
 }
