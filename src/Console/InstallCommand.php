@@ -587,25 +587,26 @@ class InstallCommand extends Command
         copy(__DIR__.'/stubs/router/public.php', base_path('routes/public.php'));
 	}
 	public function initMiddleware(){
+		if (!is_dir(app_path('Http/Middleware'))) {
+            $this->makeDir("{app_path('Http/Middleware')}/");
+		}
 		copy(__DIR__.'/stubs/middleware/Authenticate.php', app_path('Http/Middleware/Authenticate.php'));
 		copy(__DIR__.'/stubs/middleware/CheckRight.php', app_path('Http/Middleware/CheckRight.php'));
 		copy(__DIR__.'/stubs/middleware/Locale.php', app_path('Http/Middleware/Locale.php'));
 		copy(__DIR__.'/stubs/middleware/SetMailSMTPConfig.php', app_path('Http/Middleware/SetMailSMTPConfig.php'));
-		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\CheckRight::class', 'checkright');
-		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\Locale::class', 'locale');
-		$this->installMiddlewareAfter('EnsureEmailIsVerified::class', '\App\Http\Middleware\SetMailSMTPConfig::class', 'mail');
+		$this->installMiddlewareAfter();		
 	}
-	protected function installMiddlewareAfter($after, $name, $alias)
+	protected function installMiddlewareAfter()
     {
-        $httpKernel = file_get_contents(app_path('Http/Kernel.php'));
-        $routemiddleware = Str::before(Str::after($httpKernel, '$routeMiddleware = ['), '];');        
+        $httpKernel = file_get_contents(base_path('bootstrap/app.php'));
+        $routemiddleware = Str::before(Str::after($httpKernel, 'withMiddleware(function (Middleware $middleware) {'), '})');        
         if (! Str::contains($routemiddleware, $name)) {
             $modifiedRouteMiddlewareGroup = str_replace(
-                $after.',',
-                $after.','.PHP_EOL.'        \''.$alias.'\'=>'.$name.',',
+                '//',
+				'$middleware->alias(['. '.PHP_EOL.'        \''.'\'auth\'=>\App\Http\Middleware\Authenticate::class,'.'.PHP_EOL.'        \''.'\'mail\'=>\App\Http\Middleware\SetMailSMTPConfig::class,'.'. '.PHP_EOL.'        \''.'\'locale\'=>\App\Http\Middleware\Locale::class,'. '. '.PHP_EOL.'        \''.'\'checkright\'=>\App\Http\Middleware\CheckRight::class'.'. '.PHP_EOL.'        \''.'];',
                 $routemiddleware,
             );
-            file_put_contents(app_path('Http/Kernel.php'), str_replace($routemiddleware, $modifiedRouteMiddlewareGroup, $httpKernel));
+            file_put_contents(base_path('bootstrap/app.php'), str_replace($routemiddleware, $modifiedRouteMiddlewareGroup, $httpKernel));
         }
     }
 	protected function getStub($name)
