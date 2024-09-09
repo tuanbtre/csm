@@ -603,7 +603,7 @@ class InstallCommand extends Command
         if (! Str::contains($routemiddleware, $name)) {
             $modifiedRouteMiddlewareGroup = str_replace(
                 '//',
-				'$middleware->alias(['. '.PHP_EOL.'        \''.'\'auth\'=>\App\Http\Middleware\Authenticate::class,'.'.PHP_EOL.'        \''.'\'mail\'=>\App\Http\Middleware\SetMailSMTPConfig::class,'.'. '.PHP_EOL.'        \''.'\'locale\'=>\App\Http\Middleware\Locale::class,'. '. '.PHP_EOL.'        \''.'\'checkright\'=>\App\Http\Middleware\CheckRight::class'.'. '.PHP_EOL.'        \''.'];',
+				'$middleware->alias(['. '.PHP_EOL.'        \''.'\'auth\'=>\App\Http\Middleware\Authenticate::class,'.'.PHP_EOL.'        \''.'\'mail\'=>\App\Http\Middleware\SetMailSMTPConfig::class,'.'. '.PHP_EOL.'        \''.'\'locale\'=>\App\Http\Middleware\Locale::class,'. '. '.PHP_EOL.'        \''.'\'checkright\'=>\App\Http\Middleware\CheckRight::class'.'. '.PHP_EOL.'        \''.']);',
                 $routemiddleware,
             );
             file_put_contents(base_path('bootstrap/app.php'), str_replace($routemiddleware, $modifiedRouteMiddlewareGroup, $httpKernel));
