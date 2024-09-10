@@ -599,15 +599,16 @@ class InstallCommand extends Command
 	protected function installMiddlewareAfter()
     {
         $httpKernel = file_get_contents(base_path('bootstrap/app.php'));
-        $routemiddleware = Str::before(Str::after($httpKernel, 'withMiddleware(function (Middleware $middleware) {'), '})');        
-        if (! Str::contains($routemiddleware, $name)) {
-            $modifiedRouteMiddlewareGroup = str_replace(
-                '//',
-				'$middleware->alias(['. '.PHP_EOL.'        \''.'\'auth\'=>\App\Http\Middleware\Authenticate::class,'.'.PHP_EOL.'        \''.'\'mail\'=>\App\Http\Middleware\SetMailSMTPConfig::class,'.'. '.PHP_EOL.'        \''.'\'locale\'=>\App\Http\Middleware\Locale::class,'. '. '.PHP_EOL.'        \''.'\'checkright\'=>\App\Http\Middleware\CheckRight::class'.'. '.PHP_EOL.'        \''.']);',
-                $routemiddleware,
-            );
-            file_put_contents(base_path('bootstrap/app.php'), str_replace($routemiddleware, $modifiedRouteMiddlewareGroup, $httpKernel));
-        }
+        $pattern = '/\(Middleware \$middleware\) \{(.*?)\}/s';
+		$replacement = <<<'REPLACEMENT'
+			$middleware->alias([
+					'auth'=>\App\Http\Middleware\Authenticate::class,
+					'mail'=>\App\Http\Middleware\SetMailSMTPConfig::class,
+					'locale'=>\App\Http\Middleware\Locale::class,
+					'checkright'=>\App\Http\Middleware\CheckRight::class
+					]);
+			REPLACEMENT;
+		file_put_contents(base_path('bootstrap/app.php'), preg_replace($pattern, "(Middleware \$middleware) {\n$replacement\n}", $httpKernel));
     }
 	protected function getStub($name)
     {
