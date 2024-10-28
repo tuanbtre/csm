@@ -37,6 +37,6 @@ Route::group(['namespace'=> 'App\\Http\\Controllers', 'middleware'=>['locale']],
 });
 Route::fallback(function(){
 	if(Request()->route()->getPrefix()=='admin')
-		return Redirect::route('admin.home')
+		return Redirect::route('admin.home');
 	else
 		return Redirect::route(__('route.home'));});
