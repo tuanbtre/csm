@@ -588,7 +588,7 @@ class InstallCommand extends Command
 	}
 	public function initMiddleware(){
 		if (!is_dir(app_path('Http/Middleware'))) {
-            $this->makeDir("{app_path('Http/Middleware')}/");
+            $this->makeDir(app_path('Http/Middleware')."/");
 		}
 		copy(__DIR__.'/stubs/middleware/Authenticate.php', app_path('Http/Middleware/Authenticate.php'));
 		copy(__DIR__.'/stubs/middleware/CheckRight.php', app_path('Http/Middleware/CheckRight.php'));
