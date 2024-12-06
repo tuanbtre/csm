@@ -43,4 +43,23 @@ class CKEditorController extends Controller
          echo $re;
       }
    }
+	public function pasteanddrop(Request $request){
+      $validator = \Validator::make($request->all(), [
+         'upload' => 'nullable|mimes:jpeg,bmp,png|max:1024'
+      ]);
+      if ($validator->fails()) {
+         $result = ['uploaded'=>0, 'error'=>['message'=>'File upload phải có định dạng jpg,bmp,png và nhỏ hơn 1Mb']];
+         return response()->json($result);
+      }
+      if($request->hasFile('upload')) {
+         $filenamewithextension = $request->file('upload')->getClientOriginalName();
+         $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+         $extension = $request->file('upload')->getClientOriginalExtension();
+         $filenametostore = $filename.'_'.time().'.'.$extension;
+         $request->file('upload')->storeAs('uploads', $filenametostore, 'public');
+         $url = asset('storage/uploads/'.$filenametostore);
+         $result = ['uploaded'=>1, 'fileName'=>$filenametostore, 'url'=>$url];
+         return response()->json($result);
+      }   
+   }
 }
