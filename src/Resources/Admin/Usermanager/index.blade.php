@@ -60,7 +60,7 @@
 		                  <td>{!!$item->email!!}</td>
 		                  <td><input type="checkbox" name="isactive" {!!$item->isactive==1? 'checked' : ''!!} disabled></td>
 		                  <td id="row_{{$item['id']}}" data-name="{{$item['name']}}" data-username="{{$item['username']}}" data-image="{{$item['image']}}" data-phone="{{$item['phone']}}" data-email="{{$item['email']}}" data-isactive="{{$item['isactive']}}" data-priority="{{$item['priority']}}">
-		                    <i class="fa fa-pencil" onclick="Set({{$item['id']}})"></i>
+		                    <i class="fa fa-pencil" onclick="SetRecord({{$item['id']}})"></i>
 		                    <i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i>
 		                  </td>
 	                	</tr>
@@ -151,7 +151,7 @@
   @parent
   <script src="{{asset('vendor/csm/js/admintool.js')}}"></script>
   <script type="text/javascript">
-    function Set(_id) {
+    function SetRecord(_id) {
       $('#alert').remove();
       $('#changePass').val('0');
       var id_row = 'row_' + _id;

@@ -56,7 +56,7 @@
                      <td>{!!$item->title!!}</td>
                      <td>{!!$item->content!!}</td>
                      <td id="row_{{$item['id']}}" data-fullname="{!!$item['fullname']!!}" data-content="{!! str_replace('"','&quot;', $item['content']) !!}" data-address="{{$item['address']}}" data-email="{{$item['email']}}" data-phone="{{$item['phone']}}" data-company="{{$item['company']}}" data-title="{{$item['title']}}">
-                       <i class="fa fa-eye" onclick="Set({{$item['id']}})"></i>
+                       <i class="fa fa-eye" onclick="SetRecord({{$item['id']}})"></i>
                        <span style="display: inline-block;"><form method="post" onsubmit="confirmdel(event)" action="{!! route('admin.contactmail.index', ['Id'=>$item['id']]) !!}">@csrf <input type="Hidden" id="deleteMode" name="deleteMode" value="1"><button type="submit" style="border:none"><i class="fa fa-times" onclick="SetDeleteMode({{$item['id']}})"></i></button></form></span>
                      </td>                  
                   </tr>
@@ -130,7 +130,7 @@
    <script src="{{asset('vendor/csm/js/admintool.js')}}"></script>
    <script src="{{asset('vendor/csm/js/number.js')}}"></script>
    <script type="text/javascript">
-   function Set(_id) {
+   function SetRecord(_id) {
       $('#alert').remove();
       var id_row = 'row_' + _id;
       $('#Id').val(_id);

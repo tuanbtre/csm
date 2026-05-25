@@ -1,6 +1,7 @@
 {
     "name": "tuanbtre/csm",
-    "description": "Website for developer",
+    "type": "library",
+    "description": "Laravel CMS package with admin panel, user management, and content system",
 	"authors": [{
             "name": "Nguyen Minh Tuan",
             "email": "tuancsharp@gmail.com"
@@ -9,6 +10,7 @@
 		"php": "^8.0",
 		"laravel/ui": "^4.2",
 		"spatie/laravel-analytics": "^5.0",
+        "intervention/image-laravel": "^1.0",
         "unisharp/laravel-filemanager": "^2.5"
 	},
 	"extra": {
@@ -20,8 +22,7 @@
     },
 	"autoload": {
         "psr-4": {
-            "Tuanbtre\\Csm\\": "src/",
-            "App\\": "app/"
+            "Tuanbtre\\Csm\\": "src/"
         },
 		"files":[
             "src/helpers/helper.php"
@@ -29,7 +30,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-			"Tuanbtre\\Csm\\": "src/",
 			"Tests\\": "tests/"
         }
     }

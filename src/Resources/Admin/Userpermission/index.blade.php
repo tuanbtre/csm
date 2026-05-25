@@ -69,7 +69,7 @@
                </tr>
                @foreach ($userlist as $user)
                <tr>
-                  <td class="cell_normal" style="cursor:pointer;" id="row_{{$user['id']}}" onclick="active_item(this);Set({!!$user->id.','.$user->func->pluck('id')!!})">{!! $user['username'] !!}
+                  <td class="cell_normal" style="cursor:pointer;" id="row_{{$user['id']}}" onclick="active_item(this);SetRecord({!!$user->id.','.$user->func->pluck('id')!!})">{!! $user['username'] !!}
                   </td>
                </tr>
                @endforeach                        
@@ -89,7 +89,7 @@
          $(this).prop("checked", check_all);
       });
    }
-   function Set(_userID, _listfunc){
+   function SetRecord(_userID, _listfunc){
       $('#user_id').val(_userID);
       $('#tblListFunction input[type=checkbox]').each(function () {
          $(this).prop("checked", false);

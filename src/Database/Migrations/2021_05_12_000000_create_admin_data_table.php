@@ -72,10 +72,12 @@ class CreateAdminDataTable extends Migration
 		Schema::create('meta_header', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
+            $table->string('route_name', 255);
             $table->text('keyword')->nullable();
             $table->text('meta_description')->nullable();
             $table->string('image', 255)->nullable();
             $table->tinyInteger('language_id')->nullable()->default(2);
+			$table->tinyInteger('isactive')->default(0);
             $table->timestamps();
         });
 		Schema::create('tbl_pagging', function (Blueprint $table) {

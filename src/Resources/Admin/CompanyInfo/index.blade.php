@@ -156,7 +156,7 @@
                         </tr>
                         @foreach ($list as $item)
                         <tr>
-                           <td class="cell_normal" style="cursor:pointer;" id="row_{{$item['id']}}" onclick="active_item(this);Set('{{$item['id']}}')" data-title="{{$item['title']}}" data-link="{{$item['link']}}" data-content="{{$item['content']}}" data-fonticon="{{$item['font_icon']}}" data-priority="{{$item['priority']}}" data-code="{!!$item['code']!!}" data-isactive="{{$item['isactive']}}" data-image="{{$item['image']}}">
+                           <td class="cell_normal" style="cursor:pointer;" id="row_{{$item['id']}}" onclick="active_item(this);SetRecord('{{$item['id']}}')" data-title="{{$item['title']}}" data-link="{{$item['link']}}" data-content="{{$item['content']}}" data-fonticon="{{$item['font_icon']}}" data-priority="{{$item['priority']}}" data-code="{!!$item['code']!!}" data-isactive="{{$item['isactive']}}" data-image="{{$item['image']}}">
                                  {{$item['title']}} 
                            </td>
                         </tr>
@@ -181,7 +181,7 @@
    <script src="{{asset('vendor/csm/js/admintool.js')}}"></script>
    <script src="{{asset('vendor/csm/js/number.js')}}"></script>
    <script type="text/javascript">
-      function Set(_id) {
+      function SetRecord(_id) {
          $('#deleteMode').val('0');
          $('#alert').remove();
          var id_row = 'row_' + _id;
