@@ -2,7 +2,7 @@
     "name": "tuanbtre/csm",
     "type": "library",
     "description": "Laravel CMS package with admin panel, user management, and content system",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "license": "MIT",
 	"authors": [{
             "name": "Nguyen Minh Tuan",
